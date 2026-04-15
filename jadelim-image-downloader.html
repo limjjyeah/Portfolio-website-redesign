@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>jenniferjadelim.com — Image Downloader</title>
+<style>
+  body { font-family: monospace; background: #f7f7f5; color: #111; padding: 2rem; max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1rem; margin-bottom: 0.5rem; }
+  p { font-size: 0.9rem; color: #555; margin-bottom: 1.5rem; }
+  button { font-family: monospace; font-size: 1rem; padding: 0.75rem 2rem; background: #111; color: #f7f7f5; border: none; cursor: pointer; }
+  button:disabled { opacity: 0.4; cursor: default; }
+  #log { margin-top: 1.5rem; font-size: 0.85rem; line-height: 1.8; white-space: pre-wrap; }
+  .ok { color: #2a7a2a; }
+  .err { color: #b00; }
+  #progress { margin-top: 1rem; font-size: 0.85rem; color: #555; }
+</style>
+</head>
+<body>
+<h1>jenniferjadelim.com — Image Downloader</h1>
+<p>Click the button, select (or create) a folder named <strong>jenniferjadelim-images</strong>, and all images will be downloaded there.</p>
+<button id="btn">choose folder & download all images</button>
+<div id="progress"></div>
+<div id="log"></div>
+
+<script>
+const IMAGES = [
+  // === HOMEPAGE ===
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/75db6416-3d9f-4a5a-8fb6-9b6c4caddca9/JenniferJadeLim_Signature.png?format=2500w", name: "JenniferJadeLim_Signature.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/ad30e9d8-3fc5-427f-9390-12c5788fa51e/JenniferJadeLim_Stamp_Black.png?format=2500w", name: "JenniferJadeLim_Stamp_Black.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1f3ff7d7-ec3d-4539-8709-1e25daeac150/JJLM_BookAug2020_6.png?format=2500w", name: "JJLM_BookAug2020_6.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/2649b83a-c31d-46c5-b557-e9f021bf3443/JJLM_Book2020_05.png?format=2500w", name: "JJLM_Book2020_05.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/902f5f4c-2cdd-4e86-9bcc-aa2c4e7c3a58/JJLM_Book2020_29.png?format=2500w", name: "JJLM_Book2020_29.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/02f6024e-8a6b-474b-a476-5dc1c80e86b5/JJLM_Book20192020_34.png?format=2500w", name: "JJLM_Book20192020_34.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/4645196a-00c0-471b-987a-32e7482ef0cf/JJLM_Book2020_45.png?format=2500w", name: "JJLM_Book2020_45.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/2478ba05-4a4b-4ca8-8865-d09b3f9da424/A-0003-2019-13.png?format=2500w", name: "A-0003-2019-13.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/e6a67a24-18ab-4785-af1d-b353defa1233/JJLM_Book2020_38.png?format=2500w", name: "JJLM_Book2020_38.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/55cb3497-9b94-42b9-b534-63c7c5368b5e/JJLM_BookAug2020_7.png?format=2500w", name: "JJLM_BookAug2020_7.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/abd428e4-691f-4264-b04f-00359c81c1b7/JJLM_Book20192020_35.png?format=2500w", name: "JJLM_Book20192020_35.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/e2c6989e-7e10-48f5-af4f-f2b4a16ce114/JJLM_Book2020_02.png?format=2500w", name: "JJLM_Book2020_02.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/02e8c435-2b1d-4752-a202-2983e4c8a8b2/B-0002-Musical-Energy-8.png?format=2500w", name: "B-0002-Musical-Energy-8.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/b41441cf-a0c6-4e43-a45b-199a094fca5a/JJLM_Book2020_04.png?format=2500w", name: "JJLM_Book2020_04.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/3fd0011f-9f9f-4e07-972f-af8d42245c1a/JJLM_Book20192020_8.png?format=2500w", name: "JJLM_Book20192020_8.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/00dbf2fe-a14c-4ba0-b7af-fad00d7249d8/JJLM_BookAug2020_11.png?format=2500w", name: "JJLM_BookAug2020_11.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/751c7085-9285-4491-a99d-490f6aaf5315/JJLM_Book20192020_6.png?format=2500w", name: "JJLM_Book20192020_6.png" },
+
+  // === COLLAGE BOOK ===
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816343511-WIDZEJ5XS1XON6IXFW10/B-0004-Collage-Book-8.png?format=2500w", name: "B-0004-Collage-Book-8.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816128420-KQ3C4FIID2BYXRSJY89U/B-0004-Collage-Book-9.png?format=2500w", name: "B-0004-Collage-Book-9.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816130133-59OYM998L5I0OT7FL4RX/B-0004-Collage-Book-15.png?format=2500w", name: "B-0004-Collage-Book-15.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816133700-E3VWQV4LN7Z15XRPZWT7/B-0004-Collage-Book-16.png?format=2500w", name: "B-0004-Collage-Book-16.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816411784-54ITLQ8FAVID1B9L0NBL/B-0004-Collage-Book-18.png?format=2500w", name: "B-0004-Collage-Book-18.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816133211-H9801YHXO35ZA204US0T/B-0004-Collage-Book-17.png?format=2500w", name: "B-0004-Collage-Book-17.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816136376-Y2EVYRK03JFS5FXJH12T/B-0004-Collage-Book-19.png?format=2500w", name: "B-0004-Collage-Book-19.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816137585-9IWNQIFDQ4PDT6P5PMDG/B-0004-Collage-Book-23.png?format=2500w", name: "B-0004-Collage-Book-23.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816141967-ER22G55Y73UAQ1P6O1YZ/B-0004-Collage-Book-24.png?format=2500w", name: "B-0004-Collage-Book-24.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816141095-QD64WHPPQZTZ8FI1DGHP/B-0004-Collage-Book-26.png?format=2500w", name: "B-0004-Collage-Book-26.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816145877-6QERJXISSOGPTPYEC8ZG/B-0004-Collage-Book-27.png?format=2500w", name: "B-0004-Collage-Book-27.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816145343-HFB2K7UHF0WSOPYSLWM3/B-0004-Collage-Book-31.png?format=2500w", name: "B-0004-Collage-Book-31.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816148409-C1G6W5M5KUZJ86UDH8S5/B-0004-Collage-Book-34.png?format=2500w", name: "B-0004-Collage-Book-34.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816149632-Q5U7LTKLCV6IIGDIUS31/B-0004-Collage-Book-40.png?format=2500w", name: "B-0004-Collage-Book-40.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816343240-E7KS0F2EG9BPGC2GG5XD/B-0004-Collage-Book-41.png?format=2500w", name: "B-0004-Collage-Book-41.png" },
+
+  // === BRUSH STROKES ===
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816934974-8HOZIZ1C2UHQREFOUOC4/B-0003-Brush-Strokes-7.png?format=2500w", name: "B-0003-Brush-Strokes-7.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816934657-E29XLIYD6IMYFJOSAZFA/B-0003-Brush-Strokes-11.png?format=2500w", name: "B-0003-Brush-Strokes-11.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816939372-KM55MNHYWXUX4FZSG9H6/B-0003-Brush-Strokes-12.png?format=2500w", name: "B-0003-Brush-Strokes-12.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816938620-OCZNB0KJWYZQEJ1M4FWR/B-0003-Brush-Strokes-14.png?format=2500w", name: "B-0003-Brush-Strokes-14.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816941998-KGWLDOH2DGUEFUVNTK41/B-0003-Brush-Strokes-15.png?format=2500w", name: "B-0003-Brush-Strokes-15.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816943377-QAKLCMJNBXF8PBJSYSCQ/B-0003-Brush-Strokes-19.png?format=2500w", name: "B-0003-Brush-Strokes-19.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816945641-8OBLW18EODZKP44XCDYO/B-0003-Brush-Strokes-20.png?format=2500w", name: "B-0003-Brush-Strokes-20.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816947760-K5LFFG43ORO84Z3BGLCC/B-0003-Brush-Strokes-24.png?format=2500w", name: "B-0003-Brush-Strokes-24.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816948849-JGH17KKOXR3DOY8GVQXL/B-0003-Brush-Strokes-25.png?format=2500w", name: "B-0003-Brush-Strokes-25.png" },
+
+  // === SURF SKATE ===
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678817035112-ERDPWZ290737I37G9PME/B-0005-Surf-Skate-5.png?format=2500w", name: "B-0005-Surf-Skate-5.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678817034912-GEW13CZ1GB4LDM5SOKLX/B-0005-Surf-Skate-6.png?format=2500w", name: "B-0005-Surf-Skate-6.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678817039854-27AEANC32LFLKHK9E0O8/B-0005-Surf-Skate-7.png?format=2500w", name: "B-0005-Surf-Skate-7.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678817038682-AF2QWDVY4QE037W21S7E/B-0005-Surf-Skate-12.png?format=2500w", name: "B-0005-Surf-Skate-12.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678817042116-8QLYJ47JW9RU7L0BI1VC/B-0005-Surf-Skate-14.png?format=2500w", name: "B-0005-Surf-Skate-14.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678817044441-0QYK6SF78N39DXX5MZOU/B-0005-Surf-Skate-15.png?format=2500w", name: "B-0005-Surf-Skate-15.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678817048605-IGTLJUNWU6T0F4FEZP3Z/B-0005-Surf-Skate-19.png?format=2500w", name: "B-0005-Surf-Skate-19.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678817047700-FYQMOOH43WBRXJUVK7CF/B-0005-Surf-Skate-21.png?format=2500w", name: "B-0005-Surf-Skate-21.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678817053256-5E2ZCPX3QPK3YOR4BITG/B-0005-Surf-Skate-22.png?format=2500w", name: "B-0005-Surf-Skate-22.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678817052778-FXCW3S0YI22JWLX5A97N/B-0005-Surf-Skate-23.png?format=2500w", name: "B-0005-Surf-Skate-23.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678817056366-69JER37PKSEW5S7FN7FM/B-0005-Surf-Skate-25.png?format=2500w", name: "B-0005-Surf-Skate-25.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678817056992-U6FI8FC36SCKNPKN16VA/B-0005-Surf-Skate-28.png?format=2500w", name: "B-0005-Surf-Skate-28.png" },
+
+  // === MUSICAL ENERGY ===
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816789645-1IGG14UZIN7SN13WT82S/B-0002-Musical-Energy-8.png?format=2500w", name: "B-0002-Musical-Energy-8.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816789558-AW8K0R7S8BQWNDPZYRRK/B-0002-Musical-Energy-10.png?format=2500w", name: "B-0002-Musical-Energy-10.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816793344-7GICHOU6A0WGAGQZPFS2/B-0002-Musical-Energy-12.png?format=2500w", name: "B-0002-Musical-Energy-12.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816792744-XJ7B7JO7TSAHBW4YM83J/B-0002-Musical-Energy-15.png?format=2500w", name: "B-0002-Musical-Energy-15.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816796031-Q4HUU58FDNT4JGYA4NVK/B-0002-Musical-Energy-17.png?format=2500w", name: "B-0002-Musical-Energy-17.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816796977-1MPCU272RR5HXVG4KZA1/B-0002-Musical-Energy-20.png?format=2500w", name: "B-0002-Musical-Energy-20.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816798635-TI0ITJOBUCLA92WKHGAR/B-0002-Musical-Energy-21.png?format=2500w", name: "B-0002-Musical-Energy-21.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816799937-3YA5EU5JC7PI1LYJB9H9/B-0002-Musical-Energy-23.png?format=2500w", name: "B-0002-Musical-Energy-23.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816801237-ZZU694L0RUOZDQBKUKZ3/B-0002-Musical-Energy-24.png?format=2500w", name: "B-0002-Musical-Energy-24.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816802702-SH7IKDDDH5J979YA2QEU/B-0002-Musical-Energy-25.png?format=2500w", name: "B-0002-Musical-Energy-25.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816806217-PF8M94EKQ76MZOCEEQA5/B-0002-Musical-Energy-28.png?format=2500w", name: "B-0002-Musical-Energy-28.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816805574-7W6493GWQV14BHR1XMIR/B-0002-Musical-Energy-32.png?format=2500w", name: "B-0002-Musical-Energy-32.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816809140-L1508FYVEGQQTMRPNIWR/B-0002-Musical-Energy-35.png?format=2500w", name: "B-0002-Musical-Energy-35.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816810085-2ZVWQAQ9VOQBA1XD8PCI/B-0002-Musical-Energy-38.png?format=2500w", name: "B-0002-Musical-Energy-38.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816811141-9768J86DTF4FKQK1WX54/B-0002-Musical-Energy-41.png?format=2500w", name: "B-0002-Musical-Energy-41.png" },
+
+  // === DOING NON DOING ===
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816566138-NNYIHIEZ3R8J81EGGC1B/B-0001-Doing-Non-Doing-15.png?format=2500w", name: "B-0001-Doing-Non-Doing-15.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816567961-0XSXOHLDNKK0WL21II8N/B-0001-Doing-Non-Doing-16.png?format=2500w", name: "B-0001-Doing-Non-Doing-16.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816569647-OTAROGXZ9U50JRYKAX1W/B-0001-Doing-Non-Doing-19.png?format=2500w", name: "B-0001-Doing-Non-Doing-19.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816573736-U5GARJIEVJV13TL6FLCZ/B-0001-Doing-Non-Doing-20.png?format=2500w", name: "B-0001-Doing-Non-Doing-20.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816572612-4JOK4UVL8OQM61OHKW81/B-0001-Doing-Non-Doing-24.png?format=2500w", name: "B-0001-Doing-Non-Doing-24.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816575324-0D3GAXRD4Z3J56CGVYB3/B-0001-Doing-Non-Doing-27.png?format=2500w", name: "B-0001-Doing-Non-Doing-27.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816578680-NKTUF7OJ6JEGPT20IL9M/B-0001-Doing-Non-Doing-36.png?format=2500w", name: "B-0001-Doing-Non-Doing-36.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816578340-BUXAPIYHY3ODHO7K9784/B-0001-Doing-Non-Doing-44.png?format=2500w", name: "B-0001-Doing-Non-Doing-44.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816581876-DRJRT604JREYWFRI9YE3/B-0001-Doing-Non-Doing-48.png?format=2500w", name: "B-0001-Doing-Non-Doing-48.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816583067-9OQWMT03V7SBL021W5P2/B-0001-Doing-Non-Doing-49.png?format=2500w", name: "B-0001-Doing-Non-Doing-49.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816585293-ES2MOLDZ9V22CGC1IFB1/B-0001-Doing-Non-Doing-50.png?format=2500w", name: "B-0001-Doing-Non-Doing-50.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816588370-YKLCKH7KHMCO8VMH3AOG/B-0001-Doing-Non-Doing-52.png?format=2500w", name: "B-0001-Doing-Non-Doing-52.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816588891-9XKDHSQZK35RE3MRECA7/B-0001-Doing-Non-Doing-51.png?format=2500w", name: "B-0001-Doing-Non-Doing-51.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816591680-JA86FA01ISI0ZHY0ZR5V/B-0001-Doing-Non-Doing-53.png?format=2500w", name: "B-0001-Doing-Non-Doing-53.png" },
+  { url: "https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816591619-RD0KOYCSZ1DZF18NHOTW/B-0001-Doing-Non-Doing-54.png?format=2500w", name: "B-0001-Doing-Non-Doing-54.png" },
+];
+
+document.getElementById('btn').addEventListener('click', async () => {
+  const btn = document.getElementById('btn');
+  const log = document.getElementById('log');
+  const progress = document.getElementById('progress');
+
+  btn.disabled = true;
+  log.textContent = '';
+
+  let dirHandle;
+  try {
+    dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+  } catch (e) {
+    log.textContent = 'folder selection cancelled.';
+    btn.disabled = false;
+    return;
+  }
+
+  let ok = 0, fail = 0;
+  for (let i = 0; i < IMAGES.length; i++) {
+    const { url, name } = IMAGES[i];
+    progress.textContent = `downloading ${i + 1} / ${IMAGES.length} — ${name}`;
+    try {
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const blob = await resp.blob();
+      const fileHandle = await dirHandle.getFileHandle(name, { create: true });
+      const writable = await fileHandle.createWritable();
+      await writable.write(blob);
+      await writable.close();
+      log.textContent += `✓ ${name}\n`;
+      ok++;
+    } catch (e) {
+      log.textContent += `✗ ${name} — ${e.message}\n`;
+      fail++;
+    }
+    // small pause to avoid rate-limiting
+    await new Promise(r => setTimeout(r, 80));
+  }
+
+  progress.textContent = `done. ${ok} saved, ${fail} failed.`;
+  btn.disabled = false;
+});
+</script>
+</body>
+</html>

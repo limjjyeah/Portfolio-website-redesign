@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brush Strokes — Jennifer Jade Lim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg: #F8F3F0; --fg: #3D3229; --subtle: rgba(61,50,41,0.4); --font: Georgia, 'Times New Roman', serif; --body-size: 14pt; --gutter: 2rem; --max: 1400px; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--fg); font-size: var(--body-size); line-height: 1.6; text-transform: lowercase; letter-spacing: 0; }
+body::before { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.18; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 180px 180px; }
+a { color: inherit; text-decoration: none; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem var(--gutter); max-width: var(--max); margin: 0 auto; }
+.nav-back { opacity: 0.5; transition: opacity 0.2s; }
+.nav-back:hover { opacity: 1; }
+.nav-title { color: var(--subtle); }
+.project-intro { padding: 4rem var(--gutter) 3rem; max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rem; }
+@media (min-width: 768px) { .project-intro { grid-template-columns: 1fr 1.4fr; align-items: start; gap: 5rem; } }
+.project-meta h1 { font-size: var(--body-size); font-weight: 400; margin-bottom: 1.5rem; }
+.project-description { margin-bottom: 2rem; line-height: 1.7; }
+.project-credits { color: var(--subtle); line-height: 1.8; }
+.project-hero img { width: 100%; display: block; }
+.project-gallery { padding: 3rem var(--gutter) 0; max-width: none; margin: 0; display: grid; gap: 2rem; grid-template-columns: 1fr 1fr; }
+@media (min-width: 640px) { .project-gallery { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .project-gallery { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+.project-gallery img { width: 100%; display: block; height: auto; aspect-ratio: 1/1; object-fit: cover; transition: opacity 0.3s; cursor: zoom-in; }
+.project-gallery img:hover { opacity: 0.88; }
+#lightbox { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.93); align-items: center; justify-content: center; }
+#lightbox.open { display: flex; }
+#lb-img { max-width: 88vw; max-height: 88vh; object-fit: contain; display: block; }
+#lb-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; font-family: var(--font); opacity: 0.7; transition: opacity 0.2s; z-index: 9001; line-height: 1; }
+#lb-close:hover { opacity: 1; }
+#lb-prev, #lb-next { position: fixed; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; font-family: var(--font); padding: 1rem; opacity: 0.5; transition: opacity 0.2s; z-index: 9001; line-height: 1; }
+#lb-prev { left: 1rem; } #lb-next { right: 1rem; }
+#lb-prev:hover, #lb-next:hover { opacity: 1; }
+#lb-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: #fff; font-family: var(--font); font-size: 0.85rem; opacity: 0.5; z-index: 9001; }
+</style>
+</head>
+<body>
+<nav>
+    <a href="index.html" class="nav-back">← back</a>
+    <span class="nav-title">brush strokes</span>
+</nav>
+<section class="project-intro">
+    <div class="project-meta">
+        <h1>Brush Strokes — paint on paper</h1>
+        <p class="project-description">paint directly on paper. no planning, no corrections. whatever wants to come through, comes through. each mark an attempt to catch something that can't quite be named.<br><br>there's a directness to painting that collage doesn't have — no found image to hide behind, no existing texture to borrow. it's just the gesture. the speed of the hand. working in this way, i notice what i'm avoiding and what i'm drawn toward before my mind has a chance to intervene.</p>
+        <div class="project-credits">
+            <p>ongoing</p>
+            <p>acrylic, watercolour, ink on paper</p>
+        </div>
+    </div>
+    <div class="project-hero">
+        <img src="_images%20-%20personal%20stuff/B-0003-Brush-Strokes-7.png" alt="Brush Strokes — Jennifer Jade Lim">
+    </div>
+</section>
+<section class="project-gallery">
+    <img src="_images%20-%20personal%20stuff/B-0003-Brush-Strokes-7.png" alt="Brush Strokes" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816934657-E29XLIYD6IMYFJOSAZFA/B-0003+-+Brush+Strokes+-+11.png" alt="Brush Strokes" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816939372-KM55MNHYWXUX4FZSG9H6/B-0003+-+Brush+Strokes+-+12.png" alt="Brush Strokes" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816938620-OCZNB0KJWYZQEJ1M4FWR/B-0003+-+Brush+Strokes+-+14.png" alt="Brush Strokes" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816941998-KGWLDOH2DGUEFUVNTK41/B-0003+-+Brush+Strokes+-+15.png" alt="Brush Strokes" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816943377-QAKLCMJNBXF8PBJSYSCQ/B-0003+-+Brush+Strokes+-+19.png" alt="Brush Strokes" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816945641-8OBLW18EODZKP44XCDYO/B-0003+-+Brush+Strokes+-+20.png" alt="Brush Strokes" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816947760-K5LFFG43ORO84Z3BGLCC/B-0003+-+Brush+Strokes+-+24.png" alt="Brush Strokes" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816948849-JGH17KKOXR3DOY8GVQXL/B-0003+-+Brush+Strokes+-+25.png" alt="Brush Strokes" loading="lazy">
+</section>
+<div style="padding: 4rem 2rem;"><a href="index.html" class="nav-back">← back</a></div>
+
+<div id="lightbox">
+    <button id="lb-close">×</button>
+    <button id="lb-prev">‹</button>
+    <img id="lb-img" src="" alt="">
+    <button id="lb-next">›</button>
+    <div id="lb-counter"></div>
+</div>
+<script>
+const imgs = Array.from(document.querySelectorAll('.project-gallery img'));
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCounter = document.getElementById('lb-counter');
+let current = 0;
+function open(i) { current = i; lbImg.src = imgs[i].src; lbCounter.textContent = (i+1) + ' / ' + imgs.length; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+function prev() { open((current - 1 + imgs.length) % imgs.length); }
+function next() { open((current + 1) % imgs.length); }
+imgs.forEach((img, i) => img.addEventListener('click', () => open(i)));
+document.getElementById('lb-close').addEventListener('click', close);
+document.getElementById('lb-prev').addEventListener('click', prev);
+document.getElementById('lb-next').addEventListener('click', next);
+lb.addEventListener('click', e => { if (e.target === lb) close(); });
+document.addEventListener('keydown', e => { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') prev(); if (e.key === 'ArrowRight') next(); });
+</script>
+</body>
+</html>

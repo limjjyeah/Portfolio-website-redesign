@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Image Downloader</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif, monospace;
+    background: #f5f0eb;
+    color: #2c2c2c;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px;
+  }
+  h1 { font-size: 1.4rem; font-weight: 400; letter-spacing: 0.08em; margin-bottom: 8px; }
+  p.sub { font-size: 0.85rem; color: #888; margin-bottom: 36px; }
+  #btn {
+    background: #2c2c2c;
+    color: #f5f0eb;
+    border: none;
+    padding: 14px 32px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  #btn:hover { opacity: 0.75; }
+  #btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  #log {
+    margin-top: 32px;
+    width: 100%;
+    max-width: 680px;
+    font-size: 0.78rem;
+    color: #555;
+    line-height: 1.8;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+  .item { display: flex; align-items: center; gap: 10px; padding: 4px 0; border-bottom: 1px solid #e8e2da; }
+  .item .status { width: 16px; text-align: center; flex-shrink: 0; }
+  .item .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .item .size { color: #aaa; flex-shrink: 0; }
+  .done { color: #5a8a5a; }
+  .err { color: #a05a5a; }
+  #summary { margin-top: 20px; font-size: 0.85rem; font-weight: 600; color: #2c2c2c; }
+</style>
+</head>
+<body>
+<h1>Portfolio Image Downloader</h1>
+<p class="sub">Downloads all 63 images from jenniferjadelimmerrell.com at full resolution (2500px).</p>
+<button id="btn" onclick="startDownload()">Select Images Folder &amp; Download All</button>
+<div id="log"></div>
+<div id="summary"></div>
+
+<script>
+const IMAGES = [
+  ["JesseMerrell_Invoy_Thumbnail_2025.jpg","abecb0ff-c665-44a1-9197-f8e087ffb9e9"],
+  ["JenniferMerrell_JenniferJadeLim.jpg","1706906487176-2X2BKKKO4PUSS4Y5HGSC"],
+  ["JenniferMerrell_Artemis1.jpg","1706904818011-M6EYKVN0ONEPRO6A0YTY"],
+  ["home-desktop.jpg","6d93223d-c5f5-4be3-9143-64ad3b535b0e"],
+  ["JLim_Levis_10.png","662fa2da-0027-4483-a58d-59f4482a4105"],
+  ["JLim_IGG_01.png","1742587906451-S5WL8XDOFCNULQ1PWDIW"],
+  ["JesseMerrell_Invoy_2025_1.jpg","4ac0e070-e4bd-41aa-911d-f630ea9438ba"],
+  ["JesseMerrell_Invoy_2025_3.jpg","231ef0ed-5973-4d3a-bb5b-aa0729d7df4c"],
+  ["JesseMerrell_Invoy_2025_4.jpg","7198ca81-de1d-44e1-9f1a-68eab92138d4"],
+  ["JesseMerrell_Invoy_2025_5.jpg","86c60418-adbc-41fc-9c81-c6a5c73a13f1"],
+  ["JesseMerrell_Invoy_2025_6.jpg","36296a88-acf5-4e9f-89f7-3bb53566a28e"],
+  ["JesseMerrell_Invoy_2025_7.jpg","25e98b5e-2950-4583-862f-abdcf8c9ea62"],
+  ["JesseMerrell_Invoy_2025_8.jpg","174ecb16-c7bd-4fe8-a231-078f556271c9"],
+  ["JesseMerrell_Invoy_2025_9.jpg","975fd8dd-6db8-4b41-a7b0-663ce05f7e3e"],
+  ["JesseMerrell_Invoy_2025_10.jpg","52af32e0-bd8e-4c25-9969-1fd2858800bb"],
+  ["JesseMerrell_Invoy_2025_11.jpg","a197aca7-0fcb-4828-8529-5c54cf8f9320"],
+  ["JesseMerrell_Invoy_2025_12.jpg","c4a96cb7-43cc-413b-b838-0c2462be5991"],
+  ["JesseMerrell_Invoy_2025_13.jpg","af689112-7443-4fe7-aa98-649c287ba4a5"],
+  ["JesseMerrell_Invoy_2025_14.jpg","173ec30b-df4b-4825-9007-88c14f8520be"],
+  ["JesseMerrell_Invoy_2025_15.jpg","50d7f6da-632b-4501-9d1a-79f9e51a17d5"],
+  ["JesseMerrell_Invoy_2025_16.jpg","92d28146-37cf-4ccf-8592-928043f7dcb4"],
+  ["JesseMerrell_Invoy_2025_17.jpg","5668de08-9cd6-4b7a-a84f-368e66a7f509"],
+  ["JesseMerrell_Invoy_2025_18.jpg","e63e8615-6dc4-4f4b-99fb-996ba6e03c35"],
+  ["JesseMerrell_JenniferJadeLim_2025_1.jpg","ce53734d-298b-4ac5-9f57-b7ac4a3d12ad"],
+  ["JesseMerrell_JenniferJadeLim_2025_3.jpg","27def7fe-adfc-46fc-9223-26076f6f7974"],
+  ["JesseMerrell_JenniferJadeLim_2025_4.jpg","ba02da4a-360b-44f2-aac1-4747e74ca941"],
+  ["JesseMerrell_JenniferJadeLim_2025_6.jpg","b0f8f9ec-2284-4668-8b69-e858a76e1e59"],
+  ["JesseMerrell_JenniferJadeLim_2025_7.jpg","5a855060-86ee-4533-951e-8afa1a318529"],
+  ["JesseMerrell_JenniferJadeLim_2025_8.jpg","b4692bfc-b3bc-419a-b455-640b62e5d4d5"],
+  ["JesseMerrell_JenniferJadeLim_2025_9.jpg","03c7b2b9-68cc-4bd0-bd80-77ed69ea5ec9"],
+  ["JesseMerrell_JenniferJadeLim_2025_10.jpg","c8cb37ff-902e-4c50-934f-40aef1222d13"],
+  ["JesseMerrell_JenniferJadeLim_2025_11.jpg","0d6f2db3-ced5-4d81-bf5c-14900c5ee605"],
+  ["JesseMerrell_JenniferJadeLim_2025_12.jpg","8201bd44-bd46-4c6e-8a25-0eb7655c13f4"],
+  ["JesseMerrell_JenniferJadeLim_2025_13.jpg","519483ff-ae81-47ef-98ca-54a9de4631ee"],
+  ["JesseMerrell_JenniferJadeLim_2025_14.jpg","076ec845-2cee-44c9-8d7d-72b5c9bfa0da"],
+  ["JesseMerrell_Artemis_2025_1.png","0475aee2-e816-407d-85e7-8fb60e0f3f4c"],
+  ["JesseMerrell_Artemis_2025_3.png","32b56f25-880f-4ed1-87ac-97a1c633614b"],
+  ["JesseMerrell_Artemis_2025_4.png","67a38930-e615-4ec0-a9a9-2e594421760a"],
+  ["JesseMerrell_Artemis_2025_5.png","312d8b7e-b6bf-40bd-90fd-a910f7f38766"],
+  ["JesseMerrell_Artemis_2025_6.png","75cb3e25-9e89-4612-82fb-0f7f4e140e48"],
+  ["JesseMerrell_Artemis_2025_7.png","a42163c0-e199-4565-8090-b01a838ef450"],
+  ["JesseMerrell_Artemis_2025_8.png","fada5794-2c1c-4dc7-96fa-dfee091cc55c"],
+  ["JesseMerrell_Artemis_2025_9.png","0fae6364-158c-4759-a26c-5fb2131d5875"],
+  ["JenniferMerrell_Website2.jpg","99b7ee67-7074-44dd-b8fb-17d89c90e452"],
+  ["JLim_LRNG_04.jpg","12319e1c-58db-4118-bbf4-1297c3b382c3"],
+  ["image-asset-4.png","c7ad0dc7-0b88-450a-8d30-74159612a099"],
+  ["image-asset-(2).jpeg","01890a63-8317-4a0e-8567-ceb9f8140f6e"],
+  ["LRNG-Tablet-9.png","2d5ca83f-5223-4c03-a13e-a3dbf6cdb7eb"],
+  ["graffiti-pose.jpeg","ed557588-9ed7-447c-bb56-f27fe4dac10f"],
+  ["image-asset-6.png","1ce26a23-d1da-49c9-9a02-fad7f015f648"],
+  ["image-asset-1.png","b10d55f9-6253-4d3f-a0cc-b3d5aff38b74"],
+  ["image-asset-5.png","e2a4581f-4a4b-4cb2-a852-3406661eec02"],
+  ["image-asset-2.png","ab636b33-a850-46ea-959a-2aca43e1ece6"],
+  ["image-asset.jpeg","25406ecf-6a40-49b0-8fe6-7bcd98f22ddb"],
+  ["image-asset-3.png","598a9ccd-0844-4ef2-9f8d-2d77cc723c96"],
+  ["girls.jpeg","416e04f3-f62c-4326-9560-8fda9e96a0d6"],
+  ["image-asset-7.png","46b53158-5980-4ccd-bfd1-d582998167fd"],
+  ["PUSH_Offices_Indiegogo_NewBrand.jpg","ac2746eb-dc73-4de5-9765-30ab56e1c601"],
+  ["JLim_IGG_12.png","883130e9-caf9-4bad-8873-643bc0dfd9c0"],
+  ["JLim_IGG_05.png","eb5378cf-9d73-4f70-9078-d47300388d5f"],
+  ["PUSH_Offices_IGG_Website.jpg","b25f03c3-c150-4e3e-bef0-aaed42c48099"],
+  ["Brochure_Indiegogo.jpg","d04b9b64-6156-4585-a417-d36d78a9ba19"],
+  ["push-offices.jpeg","2075428c-90f7-41cc-8c72-5b4e350f08bb"]
+];
+
+const BASE = "https://images.squarespace-cdn.com/content/v1/65bd460acab3b64f6935e171";
+
+function fmt(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
+  return (bytes/(1024*1024)).toFixed(1) + ' MB';
+}
+
+async function startDownload() {
+  const btn = document.getElementById('btn');
+  const log = document.getElementById('log');
+  const summary = document.getElementById('summary');
+  log.innerHTML = '';
+  summary.textContent = '';
+
+  if (!('showDirectoryPicker' in window)) {
+    alert('Your browser does not support the File System Access API. Please use Chrome 86+ or Edge 86+.');
+    return;
+  }
+
+  let dirHandle;
+  try {
+    dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+  } catch (e) {
+    if (e.name !== 'AbortError') alert('Could not open folder: ' + e.message);
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Downloading…';
+
+  let done = 0, failed = 0;
+
+  for (const [filename, hash] of IMAGES) {
+    const url = `${BASE}/${hash}/${encodeURIComponent(filename).replace(/\(/g,'%28').replace(/\)/g,'%29')}?format=2500w`;
+    const row = document.createElement('div');
+    row.className = 'item';
+    row.innerHTML = `<span class="status">⏳</span><span class="name">${filename}</span><span class="size">…</span>`;
+    log.appendChild(row);
+    log.scrollTop = log.scrollHeight;
+
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const blob = await res.blob();
+      const fileHandle = await dirHandle.getFileHandle(filename, { create: true });
+      const writable = await fileHandle.createWritable();
+      await writable.write(blob);
+      await writable.close();
+      row.querySelector('.status').textContent = '✓';
+      row.querySelector('.status').className = 'status done';
+      row.querySelector('.size').textContent = fmt(blob.size);
+      done++;
+    } catch (e) {
+      row.querySelector('.status').textContent = '✗';
+      row.querySelector('.status').className = 'status err';
+      row.querySelector('.size').textContent = e.message;
+      failed++;
+    }
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Download Again';
+  summary.textContent = `Complete: ${done} saved, ${failed} failed.`;
+}
+</script>
+</body>
+</html>

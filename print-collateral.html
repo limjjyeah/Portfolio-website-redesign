@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Print Collateral & Packaging — Jennifer Merrell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --bg: #F9F3F0; --fg: #292929; --muted: rgba(41,41,41,0.4); --font: Georgia, 'Times New Roman', serif; --body: 12pt; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font); background: var(--bg); color: var(--fg); font-size: var(--body); line-height: 1.6; text-transform: lowercase; position: relative; }
+  body::before { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.18; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 180px 180px; }
+  a { color: inherit; text-decoration: none; }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2rem; }
+  .nav-back { font-weight: 400; letter-spacing: 0.04em; }
+  .nav-back:hover { opacity: 0.6; }
+  .nav-title { font-weight: 400; color: var(--muted); font-size: 0.9rem; }
+  .page-header { padding: 4rem 2rem 3rem; max-width: 1400px; margin: 0 auto; }
+  .page-header h1 { font-size: var(--body); font-weight: 400; margin-bottom: 0.5rem; }
+  .page-header p { color: var(--muted); max-width: 480px; }
+  .gallery { padding: 0 2rem 6rem; max-width: 1400px; margin: 0 auto; display: grid; gap: 4rem 2.5rem; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+  .gallery-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; margin-bottom: 1.25rem; cursor: zoom-in; }
+  .gallery-caption { font-size: var(--body); line-height: 1.6; color: var(--fg); }
+
+  /* LIGHTBOX */
+  #lightbox { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.93); align-items: center; justify-content: center; }
+  #lightbox.open { display: flex; }
+  #lb-img { max-width: 88vw; max-height: 88vh; object-fit: contain; display: block; user-select: none; }
+  #lb-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; font-family: Georgia, 'Times New Roman', serif; line-height: 1; opacity: 0.7; transition: opacity 0.2s; z-index: 9001; }
+  #lb-close:hover { opacity: 1; }
+  #lb-prev, #lb-next { position: fixed; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; font-family: Georgia, 'Times New Roman', serif; padding: 1rem; opacity: 0.5; transition: opacity 0.2s; z-index: 9001; line-height: 1; }
+  #lb-prev { left: 1rem; }
+  #lb-next { right: 1rem; }
+  #lb-prev:hover, #lb-next:hover { opacity: 1; }
+  #lb-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: #fff; font-family: Georgia, 'Times New Roman', serif; font-size: 0.85rem; opacity: 0.5; z-index: 9001; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-back">← Jennifer Merrell</a>
+  <span class="nav-title">Print Collateral &amp; Packaging</span>
+</nav>
+
+<header class="page-header">
+  <h1>Print Collateral &amp; Packaging</h1>
+  <p>Tactile, considered design for the physical world — brochures, lookbooks, packaging, and printed materials that feel as good as they look.</p>
+</header>
+
+<main class="gallery">
+
+  <div class="gallery-item">
+    <img src="images/Brochure_Indiegogo.jpg" alt="Indiegogo brochure" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/push-offices.jpeg" alt="Indiegogo print" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/PUSH_Offices_Indiegogo_NewBrand.jpg" alt="Indiegogo brand environment" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit laboriosam nisi ut aliquid ex ea commodi consequatur et qua officia deserunt.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Artemis_2025_5.png" alt="Artemis print" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi tempora incidunt ut labore.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Artemis_2025_6.png" alt="Artemis print" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Artemis_2025_7.png" alt="Artemis print" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus omnis voluptas assumenda est.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Artemis_2025_8.png" alt="Artemis print" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Artemis_2025_9.png" alt="Artemis print" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Itaque earum rerum hic tenetur a sapiente delectus ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/image-asset-4.png" alt="Print collateral" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_17.jpg" alt="Invoy print" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_18.jpg" alt="Invoy print" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit laboriosam nisi ut aliquid.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JenniferMerrell_Artemis1.jpg" alt="Artemis print" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur vel illum qui dolorem eum fugiat quo voluptas nulla.</p>
+  </div>
+
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lb-close">×</button>
+  <button id="lb-prev">←</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next">→</button>
+  <span id="lb-counter"></span>
+</div>
+
+<script>
+  const imgs = [...document.querySelectorAll('.gallery-img')];
+  let current = 0;
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCounter = document.getElementById('lb-counter');
+
+  function open(index) {
+    current = index;
+    lbImg.src = imgs[current].src;
+    lbImg.alt = imgs[current].alt;
+    lbCounter.textContent = (current + 1) + ' / ' + imgs.length;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function prev() { open((current - 1 + imgs.length) % imgs.length); }
+  function next() { open((current + 1) % imgs.length); }
+
+  imgs.forEach((img, i) => img.addEventListener('click', () => open(i)));
+  document.getElementById('lb-close').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', prev);
+  document.getElementById('lb-next').addEventListener('click', next);
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+</script>
+
+<div style="padding: 4rem 2rem;"><a href="index.html" class="nav-back">← back</a></div>
+
+</body>
+</html>

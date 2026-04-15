@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website & App (UX/UI) Design — Jennifer Merrell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F9F3F0;
+    #292929;
+    --muted: rgba(41,41,41,0.4);
+    --font: Georgia, 'Times New Roman', serif;
+    --body: 12pt;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font); background: var(--bg); color: var(--fg); font-size: var(--body); line-height: 1.6; text-transform: lowercase; position: relative; }
+  body::before { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.18; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 180px 180px; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2rem; }
+  .nav-back { font-weight: 400; letter-spacing: 0.04em; }
+  .nav-back:hover { opacity: 0.6; }
+  .nav-title { font-weight: 400; color: var(--muted); font-size: 0.9rem; }
+
+  /* HEADER */
+  .page-header { padding: 4rem 2rem 3rem; max-width: 1400px; margin: 0 auto; }
+  .page-header h1 { font-size: var(--body); font-weight: 400; margin-bottom: 0.5rem; }
+  .page-header p { color: var(--muted); max-width: 480px; }
+
+  /* GALLERY */
+  .gallery { padding: 0 2rem 6rem; max-width: 1400px; margin: 0 auto; display: grid; gap: 4rem 2.5rem; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+
+  .gallery-item {}
+  .gallery-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; margin-bottom: 1.25rem; cursor: zoom-in; }
+
+  /* LIGHTBOX */
+  #lightbox { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.93); align-items: center; justify-content: center; }
+  #lightbox.open { display: flex; }
+  #lb-img { max-width: 88vw; max-height: 88vh; object-fit: contain; display: block; user-select: none; }
+  #lb-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; font-family: Georgia, 'Times New Roman', serif; line-height: 1; opacity: 0.7; transition: opacity 0.2s; z-index: 9001; }
+  #lb-close:hover { opacity: 1; }
+  #lb-prev, #lb-next { position: fixed; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; font-family: Georgia, 'Times New Roman', serif; padding: 1rem; opacity: 0.5; transition: opacity 0.2s; z-index: 9001; line-height: 1; }
+  #lb-prev { left: 1rem; }
+  #lb-next { right: 1rem; }
+  #lb-prev:hover, #lb-next:hover { opacity: 1; }
+  #lb-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: #fff; font-family: Georgia, 'Times New Roman', serif; font-size: 0.85rem; opacity: 0.5; z-index: 9001; }
+  .gallery-caption { font-size: var(--body); line-height: 1.6; color: var(--fg); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-back">← Jennifer Merrell</a>
+  <span class="nav-title">Website &amp; App (UX/UI) Design</span>
+</nav>
+
+<header class="page-header">
+  <h1>Website &amp; App (UX/UI) Design</h1>
+  <p>End-to-end digital product design — from user research and flows to high-fidelity interfaces that are intuitive, accessible, and production-ready.</p>
+</header>
+
+<main class="gallery">
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_Thumbnail_2025.jpg" alt="Invoy" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_1.jpg" alt="Invoy" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_3.jpg" alt="Invoy" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_4.jpg" alt="Invoy" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_5.jpg" alt="Invoy" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_6.jpg" alt="Invoy" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_7.jpg" alt="Invoy" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_8.jpg" alt="Invoy" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_9.jpg" alt="Invoy" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_10.jpg" alt="Invoy" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_11.jpg" alt="Invoy" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JesseMerrell_Invoy_2025_12.jpg" alt="Invoy" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione sequi.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JenniferMerrell_Website2.jpg" alt="LRNG" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/JLim_LRNG_04.jpg" alt="LRNG" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/LRNG-Tablet-9.png" alt="LRNG" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum et dolorum fuga.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/image-asset-(2).jpeg" alt="LRNG" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/image-asset-6.png" alt="LRNG" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Temporibus autem quibusdam et aut officiis debitis rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+  </div>
+
+  <div class="gallery-item">
+    <img src="images/graffiti-pose.jpeg" alt="LRNG" class="gallery-img" loading="lazy">
+    <p class="gallery-caption">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+  </div>
+
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lb-close">×</button>
+  <button id="lb-prev">←</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next">→</button>
+  <span id="lb-counter"></span>
+</div>
+
+<script>
+  const imgs = [...document.querySelectorAll('.gallery-img')];
+  let current = 0;
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCounter = document.getElementById('lb-counter');
+
+  function open(index) {
+    current = index;
+    lbImg.src = imgs[current].src;
+    lbImg.alt = imgs[current].alt;
+    lbCounter.textContent = (current + 1) + ' / ' + imgs.length;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function prev() { open((current - 1 + imgs.length) % imgs.length); }
+  function next() { open((current + 1) % imgs.length); }
+
+  imgs.forEach((img, i) => img.addEventListener('click', () => open(i)));
+  document.getElementById('lb-close').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', prev);
+  document.getElementById('lb-next').addEventListener('click', next);
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+</script>
+
+<div style="padding: 4rem 2rem;"><a href="index.html" class="nav-back">← back</a></div>
+
+</body>
+</html>

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal work — Jennifer Jade Lim Merrell">
+    <title>personal work — jennifer jade lim merrell</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --ink: #1A1410;
+            --subtle: rgba(26,20,16,0.38);
+            --ease: 0.45s ease-out;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: var(--bg);
+            color: var(--ink);
+            font-size: 14pt;
+            text-transform: lowercase;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ── NAV ── */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 300;
+            padding: 1.7rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .nav-back {
+            font-size: 14pt;
+            color: var(--subtle);
+            transition: color var(--ease);
+        }
+        .nav-back:hover { color: var(--ink); }
+        .nav-label {
+            font-size: 14pt;
+            color: var(--subtle);
+        }
+
+        /* ── PAGE WRAPPER ── */
+        .page {
+            padding-top: 8.5rem;
+            padding-bottom: 12rem;
+        }
+
+        /* ── GALLERY CONTAINER ──
+           Max-width mirrors the content column on jenniferjadelim.com:
+           images span from ~13% to ~79% of the 1097px viewport ≈ 725px wide
+           centered with auto margins.
+        ── */
+        .gallery {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 7vw;
+        }
+
+        /* ── GROUP SPACING ── */
+        .g-solo,
+        .g-pair {
+            margin-bottom: 6.5rem;
+        }
+
+        /* ── SOLO GROUPS ──
+           Single image, ~46% container width, positioned at varying
+           horizontal offsets to create the wandering centerline feel.
+        ── */
+        .g-solo {
+            display: flex;
+        }
+        .g-solo .iw       { width: 46%; }
+
+        /* Positions: offset from left of .gallery */
+        .g-solo.pos-a     { padding-left: 27%; }   /* slightly left of center */
+        .g-solo.pos-b     { padding-left: 31%; }   /* center */
+        .g-solo.pos-c     { padding-left: 22%; }   /* center-left */
+        .g-solo.pos-d     { padding-left: 29%; }   /* near center */
+
+        /* ── PAIR GROUPS ──
+           Two images side by side with a gap; left image is narrower and
+           sits ~55px lower than the right (matching jenniferjadelim.com rhythm).
+           .alt flips: right image sits lower instead.
+        ── */
+        .g-pair {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .g-pair .iw-left  { width: 28%; margin-top: 55px; }
+        .g-pair .iw-right { width: 40%; }
+
+        .g-pair.alt .iw-left  { margin-top: 0; }
+        .g-pair.alt .iw-right { margin-top: 62px; }
+
+        /* ── IMAGE WRAPPER ── */
+        .iw {
+            cursor: pointer;
+            /* scroll reveal: start invisible */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+        }
+        .iw.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .iw img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: opacity 0.25s ease;
+        }
+        .iw:hover img { opacity: 0.87; }
+
+
+        /* ── LIGHTBOX ── */
+        .lb {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        .lb.open { display: flex; }
+
+        .lb-bg {
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.96);
+            cursor: pointer;
+        }
+
+        .lb-shell {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 80vw;
+        }
+
+        .lb-img-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lb-img-wrap img {
+            display: block;
+            max-width: 78vw;
+            max-height: 84vh;
+            object-fit: contain;
+            /* fade when switching images */
+            transition: opacity 0.18s ease;
+        }
+        .lb-img-wrap img.switching { opacity: 0; }
+
+        .lb-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 1.2rem 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lb-arrow svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--subtle);
+            stroke-width: 1;
+            fill: none;
+            transition: stroke 0.2s;
+        }
+        .lb-arrow:hover svg { stroke: var(--ink); }
+        #lb-prev { left: 2rem; }
+        #lb-next { right: 2rem; }
+
+        /* Close + counter float outside the shell */
+        .lb-close {
+            position: fixed;
+            top: 1.8rem;
+            right: 2.8rem;
+            z-index: 2;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 14pt;
+            color: var(--subtle);
+            transition: color 0.2s;
+            text-transform: lowercase;
+            letter-spacing: 0.02em;
+        }
+        .lb-close:hover { color: var(--ink); }
+
+        .lb-counter {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 14pt;
+            color: var(--subtle);
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+
+
+        /* ── MOBILE ── */
+        @media (max-width: 680px) {
+            .nav { padding: 1.2rem 1.4rem; }
+            .page { padding-top: 7rem; padding-bottom: 7rem; }
+            .gallery { padding: 0 1.2rem; }
+
+            .g-solo,
+            .g-pair       { flex-direction: column; gap: 2rem; margin-bottom: 3.5rem; }
+
+            /* override all solo positions */
+            .g-solo       { padding-left: 0 !important; }
+            .g-solo .iw   { width: 86% !important; }
+
+            /* pair: left full width, right slightly inset right */
+            .g-pair .iw-left,
+            .g-pair .iw-right { width: 80%; margin-top: 0 !important; }
+            .g-pair .iw-right { align-self: flex-end; }
+
+            /* lightbox */
+            .lb-img-wrap img { max-width: 82vw; max-height: 72vh; }
+            #lb-prev { left: 0.5rem; }
+            #lb-next { right: 0.5rem; }
+            .lb-arrow { padding: 0.8rem; }
+            .lb-arrow svg { width: 22px; height: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <a href="index.html" class="nav-back">← back</a>
+    <span class="nav-label">personal work</span>
+</nav>
+
+<div class="page">
+<div class="gallery">
+
+    <!-- 1 ── solo ── -->
+    <div class="g-solo pos-a">
+        <div class="iw" data-idx="0">
+            <img src="A-0008 - Selects/JJLM_BookAug2020_6.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 2 ── pair: left lower ── -->
+    <div class="g-pair">
+        <div class="iw iw-left" data-idx="1">
+            <img src="A-0008 - Selects/B-0004 - Collage Book - 40.png" alt="personal work" loading="lazy">
+        </div>
+        <div class="iw iw-right" data-idx="2">
+            <img src="A-0008 - Selects/JJLM_Book20192020_35.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 3 ── solo ── -->
+    <div class="g-solo pos-b">
+        <div class="iw" data-idx="3">
+            <img src="A-0008 - Selects/JJLM_Book2020_29.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 4 ── pair: right lower ── -->
+    <div class="g-pair alt">
+        <div class="iw iw-left" data-idx="4">
+            <img src="A-0008 - Selects/A-0003 - 2019 - 4.png" alt="personal work" loading="lazy">
+        </div>
+        <div class="iw iw-right" data-idx="5">
+            <img src="A-0008 - Selects/B-0004 - Collage Book - 1.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 5 ── solo ── -->
+    <div class="g-solo pos-c">
+        <div class="iw" data-idx="6">
+            <img src="A-0008 - Selects/B-0003 - Brush Strokes - 1.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 6 ── pair: left lower ── -->
+    <div class="g-pair">
+        <div class="iw iw-left" data-idx="7">
+            <img src="A-0008 - Selects/B-0001 - Doing Non Doing - 8.png" alt="personal work" loading="lazy">
+        </div>
+        <div class="iw iw-right" data-idx="8">
+            <img src="A-0008 - Selects/B-0004 - Collage Book - 2.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 7 ── solo ── -->
+    <div class="g-solo pos-d">
+        <div class="iw" data-idx="9">
+            <img src="A-0008 - Selects/JJLM_Book2020_02.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 8 ── pair: right lower ── -->
+    <div class="g-pair alt">
+        <div class="iw iw-left" data-idx="10">
+            <img src="A-0008 - Selects/JJLM_Book2020_38.png" alt="personal work" loading="lazy">
+        </div>
+        <div class="iw iw-right" data-idx="11">
+            <img src="A-0008 - Selects/JJLM_BookAug2020_7.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 9 ── solo ── -->
+    <div class="g-solo pos-a">
+        <div class="iw" data-idx="12">
+            <img src="A-0008 - Selects/JJLM_Book20192020_6.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 10 ── pair: left lower ── -->
+    <div class="g-pair">
+        <div class="iw iw-left" data-idx="13">
+            <img src="A-0008 - Selects/B-0002 - Musical Energy - 1.png" alt="personal work" loading="lazy">
+        </div>
+        <div class="iw iw-right" data-idx="14">
+            <img src="A-0008 - Selects/A-0003 - 2019 - 8.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 11 ── solo ── -->
+    <div class="g-solo pos-b">
+        <div class="iw" data-idx="15">
+            <img src="A-0008 - Selects/B-0001 - Doing Non Doing - 49.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 12 ── pair: right lower ── -->
+    <div class="g-pair alt">
+        <div class="iw iw-left" data-idx="16">
+            <img src="A-0008 - Selects/JJLM_Book20192020_8.png" alt="personal work" loading="lazy">
+        </div>
+        <div class="iw iw-right" data-idx="17">
+            <img src="A-0008 - Selects/DSC00710.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 13 ── solo ── -->
+    <div class="g-solo pos-c">
+        <div class="iw" data-idx="18">
+            <img src="A-0008 - Selects/B-0004 - Collage Book - 4.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 14 ── pair: left lower ── -->
+    <div class="g-pair">
+        <div class="iw iw-left" data-idx="19">
+            <img src="A-0008 - Selects/A-0003 - 2019 - 14.png" alt="personal work" loading="lazy">
+        </div>
+        <div class="iw iw-right" data-idx="20">
+            <img src="A-0008 - Selects/JJLM_Book2020_33.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 15 ── pair: right lower ── -->
+    <div class="g-pair alt">
+        <div class="iw iw-left" data-idx="21">
+            <img src="A-0008 - Selects/B-0001 - Doing Non Doing - 10.png" alt="personal work" loading="lazy">
+        </div>
+        <div class="iw iw-right" data-idx="22">
+            <img src="A-0008 - Selects/B-0001 - Doing Non Doing - 11.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 16 ── pair: left lower ── -->
+    <div class="g-pair">
+        <div class="iw iw-left" data-idx="23">
+            <img src="A-0008 - Selects/JJLM_Book20192020_19.png" alt="personal work" loading="lazy">
+        </div>
+        <div class="iw iw-right" data-idx="24">
+            <img src="A-0008 - Selects/B-0001 - Doing Non Doing - 51.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 17 ── pair: right lower ── -->
+    <div class="g-pair alt">
+        <div class="iw iw-left" data-idx="25">
+            <img src="A-0008 - Selects/A-0003 - 2019 - 15.png" alt="personal work" loading="lazy">
+        </div>
+        <div class="iw iw-right" data-idx="26">
+            <img src="A-0008 - Selects/B-0002 - Musical Energy - 2.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 18 ── pair: left lower ── -->
+    <div class="g-pair">
+        <div class="iw iw-left" data-idx="27">
+            <img src="A-0008 - Selects/DSC00705.png" alt="personal work" loading="lazy">
+        </div>
+        <div class="iw iw-right" data-idx="28">
+            <img src="A-0008 - Selects/DSC00712-4.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+    <!-- 19 ── pair: right lower ── -->
+    <div class="g-pair alt">
+        <div class="iw iw-left" data-idx="29">
+            <img src="A-0008 - Selects/A-0003 - 2019 - 10.png" alt="personal work" loading="lazy">
+        </div>
+        <div class="iw iw-right" data-idx="30">
+            <img src="A-0008 - Selects/DSC00711-2.png" alt="personal work" loading="lazy">
+        </div>
+    </div>
+
+</div><!-- /gallery -->
+</div><!-- /page -->
+
+
+<!-- ── LIGHTBOX ── -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lb-bg" id="lb-bg"></div>
+
+    <button class="lb-arrow" id="lb-prev" aria-label="Previous image">
+        <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><polyline points="17,6 9,14 17,22"/></svg>
+    </button>
+
+    <div class="lb-shell">
+        <div class="lb-img-wrap">
+            <img id="lb-img" src="" alt="personal work">
+        </div>
+    </div>
+
+    <button class="lb-arrow" id="lb-next" aria-label="Next image">
+        <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><polyline points="11,6 19,14 11,22"/></svg>
+    </button>
+
+    <button class="lb-close" id="lb-close" aria-label="Close">close</button>
+    <div class="lb-counter" id="lb-counter" aria-live="polite"></div>
+</div>
+
+
+<script>
+(function () {
+    // ── all clickable wrappers in DOM order ──
+    const wrappers = Array.from(document.querySelectorAll('.iw'));
+    const total    = wrappers.length;
+    let   cur      = 0;
+
+    const lb      = document.getElementById('lightbox');
+    const lbImg   = document.getElementById('lb-img');
+    const lbCtr   = document.getElementById('lb-counter');
+
+    // ── helpers ──
+    function getSrc(idx) {
+        return wrappers[idx].querySelector('img').src;
+    }
+
+    function setCounter() {
+        lbCtr.textContent = (cur + 1) + ' / ' + total;
+    }
+
+    function swapImage(newIdx) {
+        lbImg.classList.add('switching');
+        setTimeout(function () {
+            cur = (newIdx + total) % total;
+            lbImg.src = getSrc(cur);
+            setCounter();
+            lbImg.classList.remove('switching');
+        }, 170);
+    }
+
+    function openLb(idx) {
+        cur = idx;
+        lbImg.src = getSrc(cur);
+        setCounter();
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        // focus for keyboard
+        lb.focus && lb.focus();
+    }
+
+    function closeLb() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    // ── wire up click on each image wrapper ──
+    wrappers.forEach(function (iw, idx) {
+        iw.addEventListener('click', function () { openLb(idx); });
+    });
+
+    document.getElementById('lb-bg').addEventListener('click',    closeLb);
+    document.getElementById('lb-close').addEventListener('click', closeLb);
+
+    document.getElementById('lb-prev').addEventListener('click', function (e) {
+        e.stopPropagation();
+        swapImage(cur - 1);
+    });
+    document.getElementById('lb-next').addEventListener('click', function (e) {
+        e.stopPropagation();
+        swapImage(cur + 1);
+    });
+
+    // keyboard
+    document.addEventListener('keydown', function (e) {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape')       closeLb();
+        if (e.key === 'ArrowLeft')    swapImage(cur - 1);
+        if (e.key === 'ArrowRight')   swapImage(cur + 1);
+    });
+
+    // swipe support (touch)
+    var touchStartX = 0;
+    lb.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    lb.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) {
+            dx < 0 ? swapImage(cur + 1) : swapImage(cur - 1);
+        }
+    }, { passive: true });
+
+    // ── scroll reveal ──
+    var revealObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                // slight stagger for images in the same row
+                var siblings = entry.target.closest('.g-pair, .g-solo')
+                    ? entry.target.closest('.g-pair, .g-solo').querySelectorAll('.iw')
+                    : [];
+                var delay = 0;
+                siblings.forEach(function (sib, i) {
+                    if (sib === entry.target) delay = i * 90;
+                });
+                setTimeout(function () {
+                    entry.target.classList.add('visible');
+                }, delay);
+                revealObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+
+    wrappers.forEach(function (iw) { revealObs.observe(iw); });
+
+})();
+</script>
+
+</body>
+</html>

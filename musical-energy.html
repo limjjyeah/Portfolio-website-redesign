@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musical Energy — Jennifer Jade Lim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg: #F8F3F0; --fg: #3D3229; --subtle: rgba(61,50,41,0.4); --font: Georgia, 'Times New Roman', serif; --body-size: 14pt; --gutter: 2rem; --max: 1400px; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--fg); font-size: var(--body-size); line-height: 1.6; text-transform: lowercase; letter-spacing: 0; }
+body::before { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.18; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 180px 180px; }
+a { color: inherit; text-decoration: none; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem var(--gutter); max-width: var(--max); margin: 0 auto; }
+.nav-back { opacity: 0.5; transition: opacity 0.2s; }
+.nav-back:hover { opacity: 1; }
+.nav-title { color: var(--subtle); }
+.project-intro { padding: 4rem var(--gutter) 3rem; max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rem; }
+@media (min-width: 768px) { .project-intro { grid-template-columns: 1fr 1.4fr; align-items: start; gap: 5rem; } }
+.project-meta h1 { font-size: var(--body-size); font-weight: 400; margin-bottom: 1.5rem; }
+.project-description { margin-bottom: 2rem; line-height: 1.7; }
+.project-credits { color: var(--subtle); line-height: 1.8; }
+.project-hero img { width: 100%; display: block; }
+.project-gallery { padding: 3rem var(--gutter) 0; max-width: none; margin: 0; display: grid; gap: 2rem; grid-template-columns: 1fr 1fr; }
+@media (min-width: 640px) { .project-gallery { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .project-gallery { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+.project-gallery img { width: 100%; display: block; height: auto; aspect-ratio: 1/1; object-fit: cover; transition: opacity 0.3s; cursor: zoom-in; }
+.project-gallery img:hover { opacity: 0.88; }
+#lightbox { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.93); align-items: center; justify-content: center; }
+#lightbox.open { display: flex; }
+#lb-img { max-width: 88vw; max-height: 88vh; object-fit: contain; display: block; }
+#lb-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; font-family: var(--font); opacity: 0.7; transition: opacity 0.2s; z-index: 9001; line-height: 1; }
+#lb-close:hover { opacity: 1; }
+#lb-prev, #lb-next { position: fixed; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; font-family: var(--font); padding: 1rem; opacity: 0.5; transition: opacity 0.2s; z-index: 9001; line-height: 1; }
+#lb-prev { left: 1rem; } #lb-next { right: 1rem; }
+#lb-prev:hover, #lb-next:hover { opacity: 1; }
+#lb-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: #fff; font-family: var(--font); font-size: 0.85rem; opacity: 0.5; z-index: 9001; }
+</style>
+</head>
+<body>
+<nav>
+    <a href="index.html" class="nav-back">← back</a>
+    <span class="nav-title">musical energy</span>
+</nav>
+<section class="project-intro">
+    <div class="project-meta">
+        <h1>Musical Energy — sound made visible</h1>
+        <p class="project-description">music has always felt like the most direct language — it bypasses interpretation and arrives somewhere in the body before the mind can get to it. these works are attempts to translate that arrival into something visual.<br><br>not illustrations of songs, not data. more like: what does it feel like to really hear something? what is the shape of a particular kind of listening? the results are abstract because the experience is abstract — colour, pressure, movement, release.</p>
+        <div class="project-credits">
+            <p>ongoing</p>
+            <p>mixed media on paper</p>
+        </div>
+    </div>
+    <div class="project-hero">
+        <img src="_images%20-%20personal%20stuff/B-0002-Musical-Energy-8.png" alt="Musical Energy — Jennifer Jade Lim">
+    </div>
+</section>
+<section class="project-gallery">
+    <img src="_images%20-%20personal%20stuff/B-0002-Musical-Energy-8.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816789558-AW8K0R7S8BQWNDPZYRRK/B-0002+-+Musical+Energy+-+10.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816793344-7GICHOU6A0WGAGQZPFS2/B-0002+-+Musical+Energy+-+12.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816792744-XJ7B7JO7TSAHBW4YM83J/B-0002+-+Musical+Energy+-+15.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816796031-Q4HUU58FDNT4JGYA4NVK/B-0002+-+Musical+Energy+-+17.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816796977-1MPCU272RR5HXVG4KZA1/B-0002+-+Musical+Energy+-+20.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816798635-TI0ITJOBUCLA92WKHGAR/B-0002+-+Musical+Energy+-+21.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816799937-3YA5EU5JC7PI1LYJB9H9/B-0002+-+Musical+Energy+-+23.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816801237-ZZU694L0RUOZDQBKUKZ3/B-0002+-+Musical+Energy+-+24.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816802702-SH7IKDDDH5J979YA2QEU/B-0002+-+Musical+Energy+-+25.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816806217-PF8M94EKQ76MZOCEEQA5/B-0002+-+Musical+Energy+-+28.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816805574-7W6493GWQV14BHR1XMIR/B-0002+-+Musical+Energy+-+32.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816809140-L1508FYVEGQQTMRPNIWR/B-0002+-+Musical+Energy+-+35.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816810085-2ZVWQAQ9VOQBA1XD8PCI/B-0002+-+Musical+Energy+-+38.png" alt="Musical Energy" loading="lazy">
+    <img src="https://images.squarespace-cdn.com/content/v1/63af50a4ec09b01b7b39e54a/1678816811141-9768J86DTF4FKQK1WX54/B-0002+-+Musical+Energy+-+41.png" alt="Musical Energy" loading="lazy">
+</section>
+<div style="padding: 4rem 2rem;"><a href="index.html" class="nav-back">← back</a></div>
+
+<div id="lightbox">
+    <button id="lb-close">×</button>
+    <button id="lb-prev">‹</button>
+    <img id="lb-img" src="" alt="">
+    <button id="lb-next">›</button>
+    <div id="lb-counter"></div>
+</div>
+<script>
+const imgs = Array.from(document.querySelectorAll('.project-gallery img'));
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCounter = document.getElementById('lb-counter');
+let current = 0;
+function open(i) { current = i; lbImg.src = imgs[i].src; lbCounter.textContent = (i+1) + ' / ' + imgs.length; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+function prev() { open((current - 1 + imgs.length) % imgs.length); }
+function next() { open((current + 1) % imgs.length); }
+imgs.forEach((img, i) => img.addEventListener('click', () => open(i)));
+document.getElementById('lb-close').addEventListener('click', close);
+document.getElementById('lb-prev').addEventListener('click', prev);
+document.getElementById('lb-next').addEventListener('click', next);
+lb.addEventListener('click', e => { if (e.target === lb) close(); });
+document.addEventListener('keydown', e => { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') prev(); if (e.key === 'ArrowRight') next(); });
+</script>
+</body>
+</html>
