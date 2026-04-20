@@ -89,5 +89,9 @@ document.getElementById('lb-next').addEventListener('click', next);
 lb.addEventListener('click', e => { if (e.target === lb) close(); });
 document.addEventListener('keydown', e => { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') prev(); if (e.key === 'ArrowRight') next(); });
 </script>
+<div style="padding: 4rem var(--gutter); display: flex; justify-content: space-between; align-items: center; max-width: var(--max); margin: 0 auto;">
+    <a href="index.html" class="nav-back">← back</a>
+    <a href="indiegogo.html" class="nav-back">next →</a>
+</div>
 </body>
 </html>
