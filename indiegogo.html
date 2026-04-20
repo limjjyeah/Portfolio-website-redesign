@@ -9,7 +9,7 @@
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --bg: #F8F3F0; --fg: #3D3229; --subtle: rgba(61,50,41,0.4); --font: Georgia, 'Times New Roman', serif; --body-size: 14pt; --gutter: 2rem; --max: 1400px; }
+:root { --bg: #F5EDE6; --fg: #3D3229; --subtle: rgba(61,50,41,0.4); --font: Georgia, 'Times New Roman', serif; --body-size: 14pt; --gutter: 2rem; --max: 1400px; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--font); background: var(--bg); color: var(--fg); font-size: var(--body-size); line-height: 1.6; text-transform: lowercase; letter-spacing: 0; }
 body::before { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.18; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 180px 180px; }
@@ -20,6 +20,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-title { color: var(--subtle); }
 .project-intro { padding: 4rem var(--gutter) 3rem; max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rem; }
 @media (min-width: 768px) { .project-intro { grid-template-columns: 1fr 1.4fr; align-items: start; gap: 5rem; } }
+@media (max-width: 768px) { :root { --gutter: 1.25rem; } }
 .project-meta h1 { font-size: var(--body-size); font-weight: 400; margin-bottom: 1.5rem; }
 .project-description { margin-bottom: 2rem; line-height: 1.7; }
 .project-credits { color: var(--subtle); line-height: 1.8; }
@@ -56,16 +57,16 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
         </div>
     </div>
     <div class="project-hero">
-        <img src="images/jlim_igg_01.png" alt="Indiegogo">
+        <img src="igg-reference/IGG - EDITED - 06.jpg" alt="Indiegogo">
     </div>
 </section>
 <section class="project-gallery">
-    <img src="images/push_offices_indiegogo_newbrand.jpg" alt="Indiegogo" loading="lazy">
-    <img src="images/jlim_igg_12.png" alt="Indiegogo" loading="lazy">
-    <img src="images/jlim_igg_05.png" alt="Indiegogo" loading="lazy">
-    <img src="images/push_offices_igg_website.jpg" alt="Indiegogo" loading="lazy">
-    <img src="images/brochure_indiegogo.jpg" alt="Indiegogo" loading="lazy">
-    <img src="images/push-offices.jpeg" alt="Indiegogo" loading="lazy">
+    <img src="igg-reference/IGG - EDITED - 01.jpg" alt="Indiegogo" loading="lazy">
+    <img src="igg-reference/IGG - EDITED - 02.jpg" alt="Indiegogo" loading="lazy">
+    <img src="igg-reference/IGG - EDITED - 03.jpg" alt="Indiegogo" loading="lazy">
+    <img src="igg-reference/IGG - EDITED - 04.jpg" alt="Indiegogo" loading="lazy">
+    <img src="igg-reference/IGG - EDITED - 05.jpg" alt="Indiegogo" loading="lazy">
+    <img src="igg-reference/IGG - EDITED - 07.jpg" alt="Indiegogo" loading="lazy">
 </section>
 <div style="padding: 4rem 1.25rem;"><a href="index.html" class="nav-back">← back</a></div>
 

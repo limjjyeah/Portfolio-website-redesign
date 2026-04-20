@@ -37,7 +37,7 @@
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 300;
-            padding: 1.7rem 3rem;
+            padding: 1.7rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -68,9 +68,9 @@
            centered with auto margins.
         ── */
         .gallery {
-            max-width: 860px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 7vw;
+            padding: 0 2rem;
         }
 
         /* ── GROUP SPACING ── */
@@ -86,13 +86,13 @@
         .g-solo {
             display: flex;
         }
-        .g-solo .iw       { width: 46%; }
+        .g-solo .iw       { width: 57.5%; }
 
         /* Positions: offset from left of .gallery */
-        .g-solo.pos-a     { padding-left: 27%; }   /* slightly left of center */
-        .g-solo.pos-b     { padding-left: 31%; }   /* center */
-        .g-solo.pos-c     { padding-left: 22%; }   /* center-left */
-        .g-solo.pos-d     { padding-left: 29%; }   /* near center */
+        .g-solo.pos-a     { padding-left: 21%; }   /* slightly left of center */
+        .g-solo.pos-b     { padding-left: 21%; }   /* center */
+        .g-solo.pos-c     { padding-left: 16%; }   /* center-left */
+        .g-solo.pos-d     { padding-left: 23%; }   /* near center */
 
         /* ── PAIR GROUPS ──
            Two images side by side with a gap; left image is narrower and
@@ -104,8 +104,8 @@
             justify-content: space-between;
             align-items: flex-start;
         }
-        .g-pair .iw-left  { width: 28%; margin-top: 55px; }
-        .g-pair .iw-right { width: 40%; }
+        .g-pair .iw-left  { width: 35%; margin-top: 55px; }
+        .g-pair .iw-right { width: 50%; }
 
         .g-pair.alt .iw-left  { margin-top: 0; }
         .g-pair.alt .iw-right { margin-top: 62px; }
@@ -233,20 +233,20 @@
 
         /* ── MOBILE ── */
         @media (max-width: 680px) {
-            .nav { padding: 1.2rem 1.4rem; }
+            .nav { padding: 1.2rem 2rem; }
             .page { padding-top: 7rem; padding-bottom: 7rem; }
-            .gallery { padding: 0 1.2rem; }
+            .gallery { padding: 0 2rem; }
 
             .g-solo,
             .g-pair       { flex-direction: column; gap: 2rem; margin-bottom: 3.5rem; }
 
             /* override all solo positions */
             .g-solo       { padding-left: 0 !important; }
-            .g-solo .iw   { width: 86% !important; }
+            .g-solo .iw   { width: 96% !important; }
 
             /* pair: left full width, right slightly inset right */
             .g-pair .iw-left,
-            .g-pair .iw-right { width: 80%; margin-top: 0 !important; }
+            .g-pair .iw-right { width: 92%; margin-top: 0 !important; }
             .g-pair .iw-right { align-self: flex-end; }
 
             /* lightbox */
@@ -267,178 +267,184 @@
 </nav>
 
 <div class="page">
+
 <div class="gallery">
 
     <!-- 1 ── solo ── -->
     <div class="g-solo pos-a">
         <div class="iw" data-idx="0">
-            <img src="A-0008 - Selects/JJLM_BookAug2020_6.png" alt="personal work" loading="lazy">
+            <img src="artwork/JJLM_BookAug2020_6.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 2 ── pair: left lower ── -->
     <div class="g-pair">
         <div class="iw iw-left" data-idx="1">
-            <img src="A-0008 - Selects/B-0004 - Collage Book - 40.png" alt="personal work" loading="lazy">
+            <img src="artwork/B-0004 - Collage Book - 40.png" alt="personal work" loading="lazy">
         </div>
         <div class="iw iw-right" data-idx="2">
-            <img src="A-0008 - Selects/JJLM_Book20192020_35.png" alt="personal work" loading="lazy">
+            <img src="artwork/JJLM_BookAug2020_7.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 3 ── solo ── -->
     <div class="g-solo pos-b">
         <div class="iw" data-idx="3">
-            <img src="A-0008 - Selects/JJLM_Book2020_29.png" alt="personal work" loading="lazy">
+            <img src="artwork/JJLM_Book2020_29.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 4 ── pair: right lower ── -->
     <div class="g-pair alt">
         <div class="iw iw-left" data-idx="4">
-            <img src="A-0008 - Selects/A-0003 - 2019 - 4.png" alt="personal work" loading="lazy">
+            <img src="artwork/A-0003 - 2019 - 4.png" alt="personal work" loading="lazy">
         </div>
         <div class="iw iw-right" data-idx="5">
-            <img src="A-0008 - Selects/B-0004 - Collage Book - 1.png" alt="personal work" loading="lazy">
+            <img src="artwork/B-0004 - Collage Book - 1.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 5 ── solo ── -->
     <div class="g-solo pos-c">
         <div class="iw" data-idx="6">
-            <img src="A-0008 - Selects/B-0003 - Brush Strokes - 1.png" alt="personal work" loading="lazy">
+            <img src="artwork/B-0003 - Brush Strokes - 1.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 6 ── pair: left lower ── -->
     <div class="g-pair">
         <div class="iw iw-left" data-idx="7">
-            <img src="A-0008 - Selects/B-0001 - Doing Non Doing - 8.png" alt="personal work" loading="lazy">
+            <img src="artwork/B-0001 - Doing Non Doing - 8.png" alt="personal work" loading="lazy">
         </div>
         <div class="iw iw-right" data-idx="8">
-            <img src="A-0008 - Selects/B-0004 - Collage Book - 2.png" alt="personal work" loading="lazy">
+            <img src="artwork/B-0004 - Collage Book - 2.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 7 ── solo ── -->
     <div class="g-solo pos-d">
         <div class="iw" data-idx="9">
-            <img src="A-0008 - Selects/JJLM_Book2020_02.png" alt="personal work" loading="lazy">
+            <img src="artwork/JJLM_Book2020_02.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 8 ── pair: right lower ── -->
     <div class="g-pair alt">
         <div class="iw iw-left" data-idx="10">
-            <img src="A-0008 - Selects/JJLM_Book2020_38.png" alt="personal work" loading="lazy">
+            <img src="artwork/JJLM_Book2020_38.png" alt="personal work" loading="lazy">
         </div>
         <div class="iw iw-right" data-idx="11">
-            <img src="A-0008 - Selects/JJLM_BookAug2020_7.png" alt="personal work" loading="lazy">
+            <img src="artwork/JJLM_BookAug2020_7.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 9 ── solo ── -->
     <div class="g-solo pos-a">
         <div class="iw" data-idx="12">
-            <img src="A-0008 - Selects/JJLM_Book20192020_6.png" alt="personal work" loading="lazy">
+            <img src="artwork/JJLM_Book20192020_6.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 10 ── pair: left lower ── -->
     <div class="g-pair">
         <div class="iw iw-left" data-idx="13">
-            <img src="A-0008 - Selects/B-0002 - Musical Energy - 1.png" alt="personal work" loading="lazy">
+            <img src="artwork/B-0002 - Musical Energy - 1.png" alt="personal work" loading="lazy">
         </div>
         <div class="iw iw-right" data-idx="14">
-            <img src="A-0008 - Selects/A-0003 - 2019 - 8.png" alt="personal work" loading="lazy">
+            <img src="artwork/A-0003 - 2019 - 8.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 11 ── solo ── -->
     <div class="g-solo pos-b">
         <div class="iw" data-idx="15">
-            <img src="A-0008 - Selects/B-0001 - Doing Non Doing - 49.png" alt="personal work" loading="lazy">
+            <img src="artwork/B-0001 - Doing Non Doing - 49.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 12 ── pair: right lower ── -->
     <div class="g-pair alt">
         <div class="iw iw-left" data-idx="16">
-            <img src="A-0008 - Selects/JJLM_Book20192020_8.png" alt="personal work" loading="lazy">
+            <img src="artwork/JJLM_Book20192020_8.png" alt="personal work" loading="lazy">
         </div>
         <div class="iw iw-right" data-idx="17">
-            <img src="A-0008 - Selects/DSC00710.png" alt="personal work" loading="lazy">
+            <img src="artwork/DSC00710.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 13 ── solo ── -->
     <div class="g-solo pos-c">
         <div class="iw" data-idx="18">
-            <img src="A-0008 - Selects/B-0004 - Collage Book - 4.png" alt="personal work" loading="lazy">
+            <img src="artwork/B-0004 - Collage Book - 4.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 14 ── pair: left lower ── -->
     <div class="g-pair">
         <div class="iw iw-left" data-idx="19">
-            <img src="A-0008 - Selects/A-0003 - 2019 - 14.png" alt="personal work" loading="lazy">
+            <img src="artwork/A-0003 - 2019 - 14.png" alt="personal work" loading="lazy">
         </div>
         <div class="iw iw-right" data-idx="20">
-            <img src="A-0008 - Selects/JJLM_Book2020_33.png" alt="personal work" loading="lazy">
+            <img src="artwork/JJLM_Book2020_33.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 15 ── pair: right lower ── -->
     <div class="g-pair alt">
         <div class="iw iw-left" data-idx="21">
-            <img src="A-0008 - Selects/B-0001 - Doing Non Doing - 10.png" alt="personal work" loading="lazy">
+            <img src="artwork/B-0001 - Doing Non Doing - 10.png" alt="personal work" loading="lazy">
         </div>
         <div class="iw iw-right" data-idx="22">
-            <img src="A-0008 - Selects/B-0001 - Doing Non Doing - 11.png" alt="personal work" loading="lazy">
+            <img src="artwork/B-0001 - Doing Non Doing - 11.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 16 ── pair: left lower ── -->
     <div class="g-pair">
         <div class="iw iw-left" data-idx="23">
-            <img src="A-0008 - Selects/JJLM_Book20192020_19.png" alt="personal work" loading="lazy">
+            <img src="artwork/JJLM_Book20192020_19.png" alt="personal work" loading="lazy">
         </div>
         <div class="iw iw-right" data-idx="24">
-            <img src="A-0008 - Selects/B-0001 - Doing Non Doing - 51.png" alt="personal work" loading="lazy">
+            <img src="artwork/B-0001 - Doing Non Doing - 51.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 17 ── pair: right lower ── -->
     <div class="g-pair alt">
         <div class="iw iw-left" data-idx="25">
-            <img src="A-0008 - Selects/A-0003 - 2019 - 15.png" alt="personal work" loading="lazy">
+            <img src="artwork/A-0003 - 2019 - 15.png" alt="personal work" loading="lazy">
         </div>
         <div class="iw iw-right" data-idx="26">
-            <img src="A-0008 - Selects/B-0002 - Musical Energy - 2.png" alt="personal work" loading="lazy">
+            <img src="artwork/B-0002 - Musical Energy - 2.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 18 ── pair: left lower ── -->
     <div class="g-pair">
         <div class="iw iw-left" data-idx="27">
-            <img src="A-0008 - Selects/DSC00705.png" alt="personal work" loading="lazy">
+            <img src="artwork/DSC00705.png" alt="personal work" loading="lazy">
         </div>
         <div class="iw iw-right" data-idx="28">
-            <img src="A-0008 - Selects/DSC00712-4.png" alt="personal work" loading="lazy">
+            <img src="artwork/DSC00712-4.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
     <!-- 19 ── pair: right lower ── -->
     <div class="g-pair alt">
         <div class="iw iw-left" data-idx="29">
-            <img src="A-0008 - Selects/A-0003 - 2019 - 10.png" alt="personal work" loading="lazy">
+            <img src="artwork/A-0003 - 2019 - 10.png" alt="personal work" loading="lazy">
         </div>
         <div class="iw iw-right" data-idx="30">
-            <img src="A-0008 - Selects/DSC00711-2.png" alt="personal work" loading="lazy">
+            <img src="artwork/DSC00711-2.png" alt="personal work" loading="lazy">
         </div>
     </div>
 
 </div><!-- /gallery -->
+
+<div style="padding: 6rem 1.25rem 8rem; max-width: 680px; margin: 0 auto; opacity: 0.6; text-align: center; line-height: 1.7;">
+    "trust the silence of your being." —gangaji
+</div>
+
 </div><!-- /page -->
 
 
@@ -568,6 +574,15 @@
     }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
 
     wrappers.forEach(function (iw) { revealObs.observe(iw); });
+
+    // Open lightbox directly if URL contains #lb=N (e.g. from homepage collage links)
+    var hashMatch = window.location.hash.match(/^#lb=(\d+)$/);
+    if (hashMatch) {
+        var targetIdx = parseInt(hashMatch[1], 10);
+        if (targetIdx >= 0 && targetIdx < total) {
+            setTimeout(function () { openLb(targetIdx); }, 50);
+        }
+    }
 
 })();
 </script>
