@@ -28,7 +28,8 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-back:hover { opacity: 1; }
 .nav-title { color: var(--subtle); }
 
-.project-intro { padding: 4rem var(--gutter) 3rem; max-width: 680px; margin-left: 0; margin-right: auto; }
+.project-intro { padding: 4rem var(--gutter) 3rem; max-width: 960px; margin-left: 0; margin-right: auto; }
+@media (min-width: 768px) { .project-intro { display: grid; grid-template-columns: 1fr 200px; gap: 5rem; align-items: start; } }
 @media (max-width: 768px) { :root { --gutter: 1.25rem; } }
 
 .project-description { margin-bottom: 2rem; line-height: 1.7; }
