@@ -18,13 +18,10 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-back { opacity: 0.5; transition: opacity 0.2s; }
 .nav-back:hover { opacity: 1; }
 .nav-title { color: var(--subtle); }
-.project-intro { padding: 4rem var(--gutter) 3rem; max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rem; }
-@media (min-width: 768px) { .project-intro { grid-template-columns: 1fr 1.4fr; align-items: start; gap: 5rem; } }
+.project-intro { padding: 4rem var(--gutter) 3rem; max-width: 680px; margin: 0 auto; }
 @media (max-width: 768px) { :root { --gutter: 1.25rem; } }
-.project-meta h1 { font-size: var(--body-size); font-weight: 400; margin-bottom: 1.5rem; }
 .project-description { margin-bottom: 2rem; line-height: 1.7; }
 .project-credits { color: var(--subtle); line-height: 1.8; }
-.project-hero img { width: 100%; display: block; }
 .project-gallery { padding: 0; max-width: none; margin: 0; display: grid; gap: 0; grid-template-columns: 1fr; }
 .project-gallery img { width: 100%; display: block; height: auto; transition: opacity 0.3s; cursor: zoom-in; }
 .project-gallery img:hover { opacity: 0.88; }
@@ -46,15 +43,11 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 </nav>
 <section class="project-intro">
     <div class="project-meta">
-        <h1>Artemis — Creative Direction, Print Design</h1>
         <p class="project-description">Artemis was born out of the belief that fine art ownership should be accessible to everyone and not just a select few, with cryptocurrency as the perfect avenue to grant this access. The goal was to challenge the art world's status quo and make "art for everyone."<br><br>In order to attract funding for the startup, the Artemis team needed an effective strategy and a complete brand identity to make the company stand out to potential investors. Working within a tight time frame, we explored the concept of disruption — combining famous historical paintings with digital effects. Through multiple design sprints, we delivered a brand kit that could easily be expanded upon as needed.</p>
         <div class="project-credits">
             <p>head of creative: Jennifer Merrell</p>
             <p>art director: Jesse Merrell</p>
         </div>
-    </div>
-    <div class="project-hero">
-        <img src="images/artemis/jennifermerrell_artemis1.jpg" alt="Artemis">
     </div>
 </section>
 <section class="project-gallery">

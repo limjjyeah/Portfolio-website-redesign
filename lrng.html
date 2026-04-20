@@ -18,13 +18,10 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-back { opacity: 0.5; transition: opacity 0.2s; }
 .nav-back:hover { opacity: 1; }
 .nav-title { color: var(--subtle); }
-.project-intro { padding: 4rem var(--gutter) 3rem; max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rem; }
-@media (min-width: 768px) { .project-intro { grid-template-columns: 1fr 1.4fr; align-items: start; gap: 5rem; } }
+.project-intro { padding: 4rem var(--gutter) 3rem; max-width: 680px; margin: 0 auto; }
 @media (max-width: 768px) { :root { --gutter: 1.25rem; } }
-.project-meta h1 { font-size: var(--body-size); font-weight: 400; margin-bottom: 1.5rem; }
 .project-description { margin-bottom: 2rem; line-height: 1.7; }
 .project-credits { color: var(--subtle); line-height: 1.8; }
-.project-hero img { width: 100%; display: block; }
 .project-gallery { padding: 0; max-width: none; margin: 0; display: grid; gap: 0; grid-template-columns: 1fr; }
 .project-gallery img { width: 100%; display: block; height: auto; transition: opacity 0.3s; cursor: zoom-in; }
 .project-gallery img:hover { opacity: 0.88; }
@@ -46,7 +43,6 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 </nav>
 <section class="project-intro">
     <div class="project-meta">
-        <h1>LRNG — UX, UI</h1>
         <p class="project-description">LRNG is a social enterprise that aims to transform how young people access and experience learning, especially those from underserved communities. Our aim was to develop and design a connected and scaleable technical infrastructure that would empower cities to easily curate, connect, and monitor an ecosystem of "experiences where learning happens" within their communities.<br><br>With a team of designers and developers, I helped create LRNG's website along with a set of high level features on the internal side of the platform, making it easier for educators and organizations to create, edit, and approve experiences for youth.</p>
         <div class="project-credits">
             <p>client: LRNG</p>
@@ -55,9 +51,6 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
             <p>art director: Buddy Bojorquez</p>
             <p>senior product designer: Jennifer Merrell</p>
         </div>
-    </div>
-    <div class="project-hero">
-        <img src="https://images.squarespace-cdn.com/content/v1/65bd460acab3b64f6935e171/99b7ee67-7074-44dd-b8fb-17d89c90e452/JenniferMerrell_Website2.jpg" alt="LRNG">
     </div>
 </section>
 <section class="project-gallery">

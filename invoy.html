@@ -28,16 +28,12 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-back:hover { opacity: 1; }
 .nav-title { color: var(--subtle); }
 
-.project-intro { padding: 4rem var(--gutter) 3rem; max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rem; }
-@media (min-width: 768px) { .project-intro { grid-template-columns: 1fr 1.4fr; align-items: start; gap: 5rem; } }
+.project-intro { padding: 4rem var(--gutter) 3rem; max-width: 680px; margin: 0 auto; }
 @media (max-width: 768px) { :root { --gutter: 1.25rem; } }
 
-.project-meta h1 { font-size: var(--body-size); font-weight: 400; margin-bottom: 1.5rem; }
 .project-description { margin-bottom: 2rem; line-height: 1.7; }
 .project-credits { color: var(--subtle); line-height: 1.8; }
 .project-credits p { margin-bottom: 0; }
-
-.project-hero img { width: 100%; display: block; }
 
 .project-gallery { padding: 0; max-width: none; margin: 0; display: flex; flex-direction: column; gap: 0; }
 .project-gallery img { width: 100%; height: auto; display: block; }
@@ -52,7 +48,6 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 
 <section class="project-intro">
     <div class="project-meta">
-        <h1>Invoy — Art Direction, Brand Identity, UX, UI</h1>
         <p class="project-description">Invoy is a weight management program that uses patented breath technology to measure fat burn more accurately and faster than a bathroom scale. Invoy's mission is to provide its members the tools to understand their state of well being and achieve their goals through structured science and support.<br><br>I lead the evolution of the new brand identity, developing and designing the updated look and feel across all of Invoy's user experience touchpoints including app, website, digital + physical collateral, and packaging. I collaborated with freelance contractors to build brand library assets including illustration, photography, web development to be used in alignment with new brand standards.</p>
         <div class="project-credits">
             <p>client: Invoy</p>
@@ -65,9 +60,6 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
             <p>packaging experience lead: Winnie Yuen</p>
             <p>photographer: Shawn Lowe</p>
         </div>
-    </div>
-    <div class="project-hero">
-        <img src="invoy-reference/Invoy - EDITED - 01.jpg" alt="Invoy">
     </div>
 </section>
 

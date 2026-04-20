@@ -18,13 +18,10 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-back { opacity: 0.5; transition: opacity 0.2s; }
 .nav-back:hover { opacity: 1; }
 .nav-title { color: var(--subtle); }
-.project-intro { padding: 4rem var(--gutter) 3rem; max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rem; }
-@media (min-width: 768px) { .project-intro { grid-template-columns: 1fr 1.4fr; align-items: start; gap: 5rem; } }
+.project-intro { padding: 4rem var(--gutter) 3rem; max-width: 680px; margin: 0 auto; }
 @media (max-width: 768px) { :root { --gutter: 1.25rem; } }
-.project-meta h1 { font-size: var(--body-size); font-weight: 400; margin-bottom: 1.5rem; }
 .project-description { margin-bottom: 2rem; line-height: 1.7; }
 .project-credits { color: var(--subtle); line-height: 1.8; }
-.project-hero img { width: 100%; display: block; }
 .project-gallery { padding: 0; max-width: none; margin: 0; display: grid; gap: 0; grid-template-columns: 1fr; }
 .project-gallery img { width: 100%; display: block; height: auto; transition: opacity 0.3s; cursor: zoom-in; }
 .project-gallery img:hover { opacity: 0.88; }
@@ -46,7 +43,6 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 </nav>
 <section class="project-intro">
     <div class="project-meta">
-        <h1>Levi's — Visual Design, UI</h1>
         <p class="project-description">Levi's was looking for a better user experience on their e-commerce site to help the site better reflect the values of the brand. The team at BCGDV held an extensive research phase on the target audience, potential consumers, and the denim industry as a whole. This helped us create key user profiles, which became the foundation for the site's user flow and experience.<br><br>We dissected key site sections (i.e. homepage, department, category, product, etc.) and tested a range of user flows in order to develop wireframes. We conducted A/B testing on proposed UI mock-ups, and interviewed customers across a range of demographics. In my role as art direction lead, I helped guide the look and feel of the re-design.</p>
         <div class="project-credits">
             <p>client: Levi's</p>
@@ -54,9 +50,6 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
             <p>creative director: La Mer Walker</p>
             <p>ux/ui designer: Jennifer Merrell</p>
         </div>
-    </div>
-    <div class="project-hero">
-        <img src="https://images.squarespace-cdn.com/content/v1/65bd460acab3b64f6935e171/f107c55a-5b91-48f7-80fb-8984bb0e4c2d/JLim_Levis_10.png" alt="Levi's">
     </div>
 </section>
 <section class="project-gallery">

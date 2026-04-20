@@ -18,13 +18,10 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-back { opacity: 0.5; transition: opacity 0.2s; }
 .nav-back:hover { opacity: 1; }
 .nav-title { color: var(--subtle); }
-.project-intro { padding: 4rem var(--gutter) 3rem; max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rem; }
-@media (min-width: 768px) { .project-intro { grid-template-columns: 1fr 1.4fr; align-items: start; gap: 5rem; } }
+.project-intro { padding: 4rem var(--gutter) 3rem; max-width: 680px; margin: 0 auto; }
 @media (max-width: 768px) { :root { --gutter: 1.25rem; } }
-.project-meta h1 { font-size: var(--body-size); font-weight: 400; margin-bottom: 1.5rem; }
 .project-description { margin-bottom: 2rem; line-height: 1.7; }
 .project-credits { color: var(--subtle); line-height: 1.8; }
-.project-hero img { width: 100%; display: block; }
 .project-gallery { padding: 0; max-width: none; margin: 0; display: grid; gap: 0; grid-template-columns: 1fr; }
 .project-gallery img { width: 100%; display: block; height: auto; transition: opacity 0.3s; cursor: zoom-in; }
 .project-gallery img:hover { opacity: 0.88; }
@@ -46,7 +43,6 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 </nav>
 <section class="project-intro">
     <div class="project-meta">
-        <h1>Indiegogo — Brand Identity Design</h1>
         <p class="project-description">Indiegogo helped pioneer crowdfunding, reshaping how ideas and products are funded. With PUSH Offices, I led the redesign of its brand identity, building a flexible system and creating print collateral like posters, brochures, booklets, and business cards. I also supported on-location photoshoots, incorporating the imagery into campaigns and marketing materials.</p>
         <div class="project-credits">
             <p>client: Indiegogo</p>
@@ -55,9 +51,6 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
             <p>art director: Brooklyn Brown</p>
             <p>designer: Jennifer Merrell</p>
         </div>
-    </div>
-    <div class="project-hero">
-        <img src="igg-reference/IGG - EDITED - 06.jpg" alt="Indiegogo">
     </div>
 </section>
 <section class="project-gallery">
