@@ -78,7 +78,7 @@ document.getElementById('lb-next').addEventListener('click', next);
 lb.addEventListener('click', e => { if (e.target === lb) close(); });
 document.addEventListener('keydown', e => { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') prev(); if (e.key === 'ArrowRight') next(); });
 </script>
-<div style="padding: 3rem var(--gutter) 0; max-width: 960px; margin-left: 0; margin-right: auto; text-align: center;">
+<div style="padding: 3rem var(--gutter) 0; max-width: 960px; margin: 0 auto; text-align: center;">
     <div class="project-credits">
         <p>client: Levi's</p>
         <p>agency: BCG Digital Ventures</p>
