@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jennifer Jade Lim — Jennifer Merrell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg: #F5EDE6; --fg: #3D3229; --subtle: rgba(61,50,41,0.4); --font: Georgia, 'Times New Roman', serif; --body-size: 14pt; --gutter: 2rem; --max: 1400px; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--fg); font-size: var(--body-size); line-height: 1.6; text-transform: lowercase; letter-spacing: 0; }
+body::before { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.18; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 180px 180px; }
+a { color: inherit; text-decoration: none; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem var(--gutter); max-width: var(--max); margin: 0 auto; }
+.nav-back { opacity: 0.5; transition: opacity 0.2s; }
+.nav-back:hover { opacity: 1; }
+.project-intro { padding: 4rem var(--gutter) 3rem; max-width: var(--max); margin: 0 auto; }
+@media (min-width: 1120px) { .project-intro { display: grid; grid-template-columns: 680px 280px; gap: 5rem; align-items: start; } }
+@media (max-width: 768px) { :root { --gutter: 1.25rem; } }
+.project-description { margin-bottom: 2rem; line-height: 1.7; }
+.project-credits { color: var(--subtle); line-height: 1.8; }
+.project-credits p { margin-bottom: 0; }
+.project-gallery { padding: 0; max-width: none; margin: 0; display: grid; gap: 0; grid-template-columns: 1fr; }
+.project-gallery img { width: 100%; display: block; height: auto; transition: opacity 0.3s; }
+.project-gallery img:hover { opacity: 0.88; }
+#lightbox { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.93); align-items: center; justify-content: center; }
+#lightbox.open { display: flex; }
+#lb-img { max-width: 88vw; max-height: 88vh; object-fit: contain; display: block; }
+#lb-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; font-family: var(--font); opacity: 0.7; transition: opacity 0.2s; z-index: 9001; line-height: 1; }
+#lb-close:hover { opacity: 1; }
+#lb-prev, #lb-next { position: fixed; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; font-family: var(--font); padding: 1rem; opacity: 0.5; transition: opacity 0.2s; z-index: 9001; line-height: 1; }
+#lb-prev { left: 1rem; } #lb-next { right: 1rem; }
+#lb-prev:hover, #lb-next:hover { opacity: 1; }
+#lb-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: #fff; font-family: var(--font); font-size: 0.85rem; opacity: 0.5; z-index: 9001; }
+.project-footer { padding: 5rem var(--gutter) 4rem; max-width: var(--max); margin: 4rem auto 0; }
+.footer-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
+.footer-thumb-card { display: block; color: inherit; }
+.footer-thumb-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; margin-bottom: 0.6rem; transition: opacity 0.3s; }
+.footer-thumb-card:hover img { opacity: 0.72; }
+.footer-thumb-name { font-size: var(--body-size); }
+.footer-thumb-discipline { font-size: var(--body-size); color: var(--subtle); }
+.footer-contact { display: flex; justify-content: space-between; align-items: center; padding-top: 2.5rem; border-top: 1px solid rgba(61,50,41,0.15); }
+.footer-contact-email a { transition: opacity 0.2s; }
+.footer-contact-email a:hover { opacity: 0.6; }
+.footer-contact-socials { display: flex; gap: 2.5rem; }
+.footer-contact-socials a { opacity: 0.5; transition: opacity 0.2s; }
+.footer-contact-socials a:hover { opacity: 1; }
+@media (max-width: 768px) { .footer-thumbs { grid-template-columns: repeat(2, 1fr); } .footer-contact { flex-direction: column; gap: 1.5rem; text-align: center; } .footer-contact-socials { justify-content: center; } }
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-back">← back</a>
+</nav>
+
+<section class="project-intro">
+    <p class="project-description"></p>
+    <div class="project-credits">
+        <p>head of creative: Jennifer Merrell</p>
+    </div>
+</section>
+
+<section class="project-gallery">
+    <img src="jenniferjadelim-reference/jenniferjadelim_01.jpg" alt="Jennifer Jade Lim" loading="lazy">
+    <img src="jenniferjadelim-reference/jenniferjadelim_02.jpg" alt="Jennifer Jade Lim" loading="lazy">
+    <img src="jenniferjadelim-reference/jenniferjadelim_03.jpg" alt="Jennifer Jade Lim" loading="lazy">
+    <img src="jenniferjadelim-reference/jenniferjadelim_04.jpg" alt="Jennifer Jade Lim" loading="lazy">
+    <img src="jenniferjadelim-reference/jenniferjadelim_05.jpg" alt="Jennifer Jade Lim" loading="lazy">
+    <img src="jenniferjadelim-reference/jenniferjadelim_06.jpg" alt="Jennifer Jade Lim" loading="lazy">
+    <img src="jenniferjadelim-reference/jenniferjadelim_07.jpg" alt="Jennifer Jade Lim" loading="lazy">
+    <img src="jenniferjadelim-reference/jenniferjadelim_08.jpg" alt="Jennifer Jade Lim" loading="lazy">
+    <img src="jenniferjadelim-reference/jenniferjadelim_09.jpg" alt="Jennifer Jade Lim" loading="lazy">
+    <img src="jenniferjadelim-reference/jenniferjadelim_10.jpg" alt="Jennifer Jade Lim" loading="lazy">
+    <img src="jenniferjadelim-reference/jenniferjadelim_11.jpg" alt="Jennifer Jade Lim" loading="lazy">
+    <img src="jenniferjadelim-reference/jenniferjadelim_12.jpg" alt="Jennifer Jade Lim" loading="lazy">
+</section>
+
+<div id="lightbox">
+    <button id="lb-close">×</button>
+    <button id="lb-prev">‹</button>
+    <img id="lb-img" src="" alt="">
+    <button id="lb-next">›</button>
+    <div id="lb-counter"></div>
+</div>
+<script>
+const imgs = Array.from(document.querySelectorAll('.project-gallery img'));
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCounter = document.getElementById('lb-counter');
+let current = 0;
+function open(i) { current = i; lbImg.src = imgs[i].src; lbCounter.textContent = (i+1) + ' / ' + imgs.length; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+function prev() { open((current - 1 + imgs.length) % imgs.length); }
+function next() { open((current + 1) % imgs.length); }
+imgs.forEach((img, i) => img.addEventListener('click', () => open(i)));
+document.getElementById('lb-close').addEventListener('click', close);
+document.getElementById('lb-prev').addEventListener('click', prev);
+document.getElementById('lb-next').addEventListener('click', next);
+lb.addEventListener('click', e => { if (e.target === lb) close(); });
+document.addEventListener('keydown', e => { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') prev(); if (e.key === 'ArrowRight') next(); });
+</script>
+
+<footer class="project-footer">
+    <div class="footer-thumbs">
+        <a href="invoy.html" class="footer-thumb-card">
+            <img src="invoy-reference/Invoy - Branding - Thumbnail.jpg" alt="Invoy" loading="lazy">
+            <div class="footer-thumb-name">Invoy</div>
+        </a>
+        <a href="artemis.html" class="footer-thumb-card">
+            <img src="artemis-reference/Artemis - Thumbnail.jpg" alt="Artemis" loading="lazy">
+            <div class="footer-thumb-name">Artemis</div>
+        </a>
+        <a href="lrng.html" class="footer-thumb-card">
+            <img src="lrng-reference/LRNG - Thumbnail.jpg" alt="LRNG" loading="lazy">
+            <div class="footer-thumb-name">LRNG</div>
+        </a>
+        <a href="levis.html" class="footer-thumb-card">
+            <img src="levis-reference/Levi's - Thumbnail.jpg" alt="Levi's" loading="lazy">
+            <div class="footer-thumb-name">Levi's</div>
+        </a>
+        <a href="indiegogo.html" class="footer-thumb-card">
+            <img src="igg-reference/IGG - Thumbnail.jpg" alt="Indiegogo" loading="lazy">
+            <div class="footer-thumb-name">Indiegogo</div>
+        </a>
+        <a href="matic.html" class="footer-thumb-card">
+            <img src="matic-reference/Matic - Thumbnail.jpg" alt="Matic" loading="lazy">
+            <div class="footer-thumb-name">Matic</div>
+        </a>
+        <a href="personal.html" class="footer-thumb-card">
+            <img src="personal/JJLM_BookAug2020_11.png" alt="Personal Work" loading="lazy">
+            <div class="footer-thumb-name">Personal Work</div>
+        </a>
+    </div>
+    <div class="footer-contact">
+        <div class="footer-contact-email">
+            <a href="mailto:limjjyeah@gmail.com">limjjyeah@gmail.com</a>
+        </div>
+        <div class="footer-contact-socials">
+            <a href="https://linkedin.com/in/jenniferjadelimmerrell" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://instagram.com/jennyisthemedium" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

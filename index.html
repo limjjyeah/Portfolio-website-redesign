@@ -271,6 +271,18 @@
             gap: 1rem;
             margin-bottom: 3rem;
             align-items: baseline;
+            padding-top: 1.6em;
+            position: relative;
+        }
+
+        .section-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100vw;
+            right: -100vw;
+            height: 1px;
+            background: var(--text-primary);
         }
 
         #about {
@@ -611,7 +623,7 @@
 
         .service-card-thumb {
             width: 100%;
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 16 / 9;
             object-fit: cover;
             display: block;
             margin-bottom: 1.25rem;
@@ -643,6 +655,49 @@
             font-size: var(--body-size);
             color: var(--subtle);
             line-height: 1.6;
+            margin: 0;
+        }
+
+        /* === INVOY HERO THUMBNAIL === */
+        .invoy-hero {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+        }
+
+        .invoy-hero a {
+            display: block;
+        }
+
+        .invoy-hero-img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.35s ease;
+        }
+
+        .invoy-hero a:hover .invoy-hero-img {
+            opacity: 0.85;
+        }
+
+        .invoy-hero-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1.25rem;
+        }
+
+        .invoy-hero-meta h3 {
+            font-size: var(--body-size);
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .invoy-hero-meta p {
+            font-size: var(--body-size);
+            color: var(--subtle);
             margin: 0;
         }
 
@@ -838,17 +893,116 @@
 
         /* === FOOTER === */
         footer {
-            padding: 3rem 1.25rem;
-            text-align: center;
-            margin-top: 4rem;
+            padding: 5rem 2rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
-        .footer-content {
+        .footer-contact-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.6em;
+            position: relative;
+        }
+
+        .footer-contact-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100vw;
+            right: -100vw;
+            height: 1px;
+            background: var(--text-primary);
+        }
+
+        .footer-contact-bar a {
             font-size: var(--body-size);
+            color: var(--text-primary);
+            transition: opacity 0.2s;
+        }
+
+        .footer-contact-bar .footer-email a:hover { opacity: 0.6; }
+
+        .footer-socials {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .footer-socials a {
+            opacity: 0.5;
+        }
+
+        .footer-socials a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .footer-contact-bar {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            .footer-socials { justify-content: center; }
+        }
+
+        /* === CLIENTS & SERVICES === */
+        .clients-services-wrap {
+            padding: 0 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .clients-services {
+            padding: 1.6em 0 5rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem 2rem;
+            position: relative;
+        }
+
+        .clients-services > div:last-child {
+            grid-column: 2 / 4;
+        }
+
+        .clients-services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100vw;
+            right: -100vw;
+            height: 1px;
+            background: var(--text-primary);
+        }
+
+        .cs-label {
+            font-size: var(--body-size);
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .cs-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cs-list li {
+            font-size: var(--body-size);
+            line-height: 2;
             color: var(--subtle);
-            letter-spacing: 0;
+        }
+
+        @media (max-width: 640px) {
+            .clients-services {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .clients-services > div:last-child {
+                grid-column: 1;
+            }
         }
 
         /* === ACCESSIBILITY & ANIMATIONS === */
@@ -899,6 +1053,16 @@
 
             section {
                 padding: 4rem 1.25rem;
+            }
+
+            .invoy-hero {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            .clients-services-wrap {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
             }
 
             .section-header {
@@ -990,7 +1154,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>hi, i'm jennifer. i like to make meaningful things and help other people express their ideas in ways that feel clear, natural, and visually simple.</p>
-                    <p>over the past decade, i've been working as a designer with startups, studios, and companies like fisker, indiegogo, levi's, lego, bcg, and invoy. i've done a bit of everything: brand identities, print things, websites, apps, and decks (too many decks).</p>
+                    <p>over the past decade, i've been working as a designer with startups, studios, and companies like fisker, indiegogo, levi's, lego, bcg, and invoy. i've done a bit of everything: brand identities, print things, websites, apps, and decks (so many decks).</p>
                     <p>outside of work i love being a homebody with my family and scrolling through photos of my two sons when they're not around.</p>
                     <p>below you'll find a mix of personal work and select design projects.</p>
                 </div>
@@ -1116,11 +1280,18 @@
             </div>
         </div>
 
+        <!-- Invoy Hero Thumbnail (above personal work) -->
+        <div class="invoy-hero">
+            <a href="invoy.html">
+                <img src="invoy-reference/Invoy - Branding - Thumbnail.jpg" alt="Invoy — Art Direction, Brand Identity, UX, UI" class="invoy-hero-img">
+            </a>
+        </div>
+
         <!-- Personal Art Section -->
         <section id="art" class="art-section">
             <div class="section-header">
                 <div>
-                    <h2 class="section-title">/ personal work</h2>
+                    <h2 class="section-title">personal work</h2>
                 </div>
             </div>
 
@@ -1128,7 +1299,7 @@
             <div class="collage-mobile-preview">
                 <div class="collage-stack">
                     <a href="personal.html#lb=12"><img class="collage-piece collage-piece-1" src="personal/JJLM_Book20192020_6.png" alt="Personal work — Jennifer Jade Lim"></a>
-                    <a href="personal.html"><img class="collage-piece collage-piece-3" src="personal/JJLM_BookAug2020_11.png" alt="Personal work — Jennifer Jade Lim"></a>
+                    <a href="jenniferjadelim.html"><img class="collage-piece collage-piece-3" src="jenniferjadelim_01.jpg" alt="Personal work — Jennifer Jade Lim"></a>
                     <a href="personal.html#lb=11"><img class="collage-piece collage-piece-4" src="personal/JJLM_BookAug2020_7.png" alt="Personal work — Jennifer Jade Lim"></a>
                 </div>
             </div>
@@ -1137,13 +1308,13 @@
                 <div class="art-text">
                     <p>i've always felt drawn to deeper truths. through journalling and collaging, using found material, i find a certain fulfillment in expressing the recurring "ghost structures" of my mind (thoughts, emotions, sensory patterns...) here are some personal expressions...</p>
 <div class="art-links">
-                        <a href="personal.html">see more →</a>
+                        <a href="jenniferjadelim.html">see more →</a>
                     </div>
                 </div>
                 <div class="art-image">
                     <div class="collage-stack">
                         <a href="personal.html#lb=12"><img class="collage-piece collage-piece-1" src="personal/JJLM_Book20192020_6.png" alt="Personal work — Jennifer Jade Lim"></a>
-                        <a href="personal.html"><img class="collage-piece collage-piece-3" src="personal/JJLM_BookAug2020_11.png" alt="Personal work — Jennifer Jade Lim"></a>
+                        <a href="jenniferjadelim.html"><img class="collage-piece collage-piece-3" src="jenniferjadelim_01.jpg" alt="Personal work — Jennifer Jade Lim"></a>
                         <a href="personal.html#lb=11"><img class="collage-piece collage-piece-4" src="personal/JJLM_BookAug2020_7.png" alt="Personal work — Jennifer Jade Lim"></a>
                     </div>
                 </div>
@@ -1154,26 +1325,18 @@
         <section id="services" class="services-section">
             <div class="section-header">
                 <div>
-                    <h2 class="section-title">/ design work</h2>
+                    <h2 class="section-title">design work</h2>
                 </div>
             </div>
 
 
             <div class="services-grid" id="servicesGrid">
-                <a href="invoy.html" class="service-card" data-tags="art direction,brand identity,ux/ui">
-                    <div class="service-card-meta">
-                        <h3>Invoy</h3>
-                        <p>Art Direction, Brand Identity, UX, UI</p>
-                    </div>
-                    <img src="invoy-reference/Invoy - EDITED - 02.jpg" alt="Invoy" class="service-card-thumb">
-                </a>
-
                 <a href="artemis.html" class="service-card" data-tags="creative direction,brand identity,print">
                     <div class="service-card-meta">
                         <h3>Artemis</h3>
                         <p>Creative Direction, Print Design</p>
                     </div>
-                    <img src="images/artemis/jennifermerrell_artemis1.jpg" alt="Artemis" class="service-card-thumb">
+                    <img src="artemis-reference/Artemis - Thumbnail.jpg" alt="Artemis" class="service-card-thumb">
                 </a>
 
                 <a href="lrng.html" class="service-card" data-tags="ux/ui,ui">
@@ -1181,7 +1344,7 @@
                         <h3>LRNG</h3>
                         <p>UX, UI</p>
                     </div>
-                    <img src="images/lrng/jlim_lrng_04.jpg" alt="LRNG" class="service-card-thumb">
+                    <img src="lrng-reference/LRNG - Thumbnail.jpg" alt="LRNG" class="service-card-thumb">
                 </a>
 
                 <a href="levis.html" class="service-card" data-tags="visual design,ui">
@@ -1189,7 +1352,7 @@
                         <h3>Levi's</h3>
                         <p>Visual Design, UI</p>
                     </div>
-                    <img src="images/levis/jlim_levis_10.png" alt="Levi's" class="service-card-thumb">
+                    <img src="levis-reference/Levi's - Thumbnail.jpg" alt="Levi's" class="service-card-thumb">
                 </a>
 
                 <a href="indiegogo.html" class="service-card" data-tags="brand identity,print">
@@ -1197,30 +1360,67 @@
                         <h3>Indiegogo</h3>
                         <p>Brand Identity Design</p>
                     </div>
-                    <img src="igg-reference/IGG - EDITED - 06.jpg" alt="Indiegogo" class="service-card-thumb">
+                    <img src="igg-reference/IGG - Thumbnail.jpg" alt="Indiegogo" class="service-card-thumb">
+                </a>
+
+                <a href="matic.html" class="service-card" data-tags="art direction,brand identity">
+                    <div class="service-card-meta">
+                        <h3>Matic</h3>
+                        <p>Art Direction, Brand Identity</p>
+                    </div>
+                    <img src="matic-reference/Matic - Thumbnail.jpg" alt="Matic" class="service-card-thumb">
                 </a>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section">
-            <div class="contact-wrapper">
-                <p class="contact-email">
-                    <a href="mailto:limjjyeah@gmail.com">limjjyeah@gmail.com</a>
-                </p>
-
-                <div class="contact-socials">
-                    <a href="https://linkedin.com/in/jenniferjadelimmerrell" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href="https://instagram.com/jennyisthemedium" target="_blank" rel="noopener noreferrer">Instagram</a>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2026 Jennifer Merrell. All rights reserved.</p>
+    <!-- Clients & Services -->
+    <div class="clients-services-wrap">
+    <div class="clients-services">
+        <div>
+            <p class="cs-label">services</p>
+            <ul class="cs-list">
+                <li>art direction</li>
+                <li>book design</li>
+                <li>brand identity</li>
+                <li>brand strategy</li>
+                <li>campaigns</li>
+                <li>creative consulting</li>
+                <li>creative direction</li>
+                <li>editorial design</li>
+                <li>exhibition design</li>
+                <li>print design</li>
+                <li>ux & ui design</li>
+                <li>website design</li>
+            </ul>
+        </div>
+        <div>
+            <p class="cs-label">clients</p>
+            <ul class="cs-list">
+                <li>Invoy</li>
+                <li>Levi's</li>
+                <li>Lego</li>
+                <li>Fisker</li>
+                <li>Collective Shift</li>
+                <li>Clover</li>
+                <li>Maker Studios</li>
+                <li>Indiegogo</li>
+                <li>Artemis</li>
+            </ul>
+        </div>
+    </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-contact-bar">
+            <div class="footer-email">
+                <a href="mailto:limjjyeah@gmail.com">limjjyeah@gmail.com</a>
+            </div>
+            <div class="footer-socials">
+                <a href="https://linkedin.com/in/jenniferjadelimmerrell" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://instagram.com/jennyisthemedium" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
         </div>
     </footer>
 

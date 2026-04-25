@@ -18,13 +18,13 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-back { opacity: 0.5; transition: opacity 0.2s; }
 .nav-back:hover { opacity: 1; }
 .nav-title { color: var(--subtle); }
-.project-intro { padding: 4rem var(--gutter) 3rem; max-width: 960px; margin-left: 0; margin-right: auto; }
-@media (min-width: 768px) { .project-intro { display: grid; grid-template-columns: 1fr 200px; gap: 5rem; align-items: start; } }
+.project-intro { padding: 4rem var(--gutter) 3rem; max-width: var(--max); margin: 0 auto; }
+@media (min-width: 1120px) { .project-intro { display: grid; grid-template-columns: 680px 280px; gap: 5rem; align-items: start; } }
 @media (max-width: 768px) { :root { --gutter: 1.25rem; } }
 .project-description { margin-bottom: 2rem; line-height: 1.7; }
 .project-credits { color: var(--subtle); line-height: 1.8; }
 .project-gallery { padding: 0; max-width: none; margin: 0; display: grid; gap: 0; grid-template-columns: 1fr; }
-.project-gallery img { width: 100%; display: block; height: auto; transition: opacity 0.3s; cursor: zoom-in; }
+.project-gallery img { width: 100%; display: block; height: auto; transition: opacity 0.3s; }
 .project-gallery img:hover { opacity: 0.88; }
 #lightbox { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.93); align-items: center; justify-content: center; }
 #lightbox.open { display: flex; }
@@ -35,36 +35,81 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 #lb-prev { left: 1rem; } #lb-next { right: 1rem; }
 #lb-prev:hover, #lb-next:hover { opacity: 1; }
 #lb-counter { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: #fff; font-family: var(--font); font-size: 0.85rem; opacity: 0.5; z-index: 9001; }
+.project-footer { padding: 5rem var(--gutter) 4rem; max-width: var(--max); margin: 4rem auto 0; }
+.footer-label { color: var(--subtle); margin-bottom: 1.5rem; }
+.footer-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
+.footer-thumb-card { display: block; color: inherit; }
+.footer-thumb-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; margin-bottom: 0.6rem; transition: opacity 0.3s; }
+.footer-thumb-card:hover img { opacity: 0.72; }
+.footer-thumb-name { font-size: var(--body-size); }
+.footer-thumb-discipline { font-size: var(--body-size); color: var(--subtle); }
+.footer-contact { display: flex; justify-content: space-between; align-items: center; padding-top: 1.6em; position: relative; } .footer-contact::before { content: ''; position: absolute; top: 0; left: -100vw; right: -100vw; height: 1px; background: var(--fg); }
+.footer-contact-email a { transition: opacity 0.2s; }
+.footer-contact-email a:hover { opacity: 0.6; }
+.footer-contact-socials { display: flex; gap: 2.5rem; }
+.footer-contact-socials a { opacity: 0.5; transition: opacity 0.2s; }
+.footer-contact-socials a:hover { opacity: 1; }
+@media (max-width: 768px) { .footer-thumbs { grid-template-columns: repeat(2, 1fr); } .footer-contact { flex-direction: column; gap: 1.5rem; text-align: center; } .footer-contact-socials { justify-content: center; } }
 </style>
 </head>
 <body>
 <nav>
     <a href="index.html" class="nav-back">← back</a>
-    <span class="nav-title">artemis</span>
 </nav>
 <section class="project-intro">
     <p class="project-description">Artemis was born out of the belief that fine art ownership should be accessible to everyone and not just a select few, with cryptocurrency as the perfect avenue to grant this access. The goal was to challenge the art world's status quo and make "art for everyone."<br><br>In order to attract funding for the startup, the Artemis team needed an effective strategy and a complete brand identity to make the company stand out to potential investors. Working within a tight time frame, we explored the concept of disruption — combining famous historical paintings with digital effects. Through multiple design sprints, we delivered a brand kit that could easily be expanded upon as needed.</p>
-</section>
-<section class="project-gallery">
-    <img src="images/artemis/jessemerrell_artemis_2025_1.png" alt="Artemis" loading="lazy">
-    <img src="images/artemis/jessemerrell_artemis_2025_3.png" alt="Artemis" loading="lazy">
-    <img src="images/artemis/jessemerrell_artemis_2025_4.png" alt="Artemis" loading="lazy">
-    <img src="images/artemis/jessemerrell_artemis_2025_5.png" alt="Artemis" loading="lazy">
-    <img src="images/artemis/jessemerrell_artemis_2025_6.png" alt="Artemis" loading="lazy">
-    <img src="images/artemis/jessemerrell_artemis_2025_7.png" alt="Artemis" loading="lazy">
-    <img src="images/artemis/jessemerrell_artemis_2025_8.png" alt="Artemis" loading="lazy">
-    <img src="images/artemis/jessemerrell_artemis_2025_9.png" alt="Artemis" loading="lazy">
-</section>
-<div style="padding: 3rem var(--gutter) 0; max-width: 960px; margin: 0 auto; text-align: center;">
     <div class="project-credits">
         <p>head of creative: Jennifer Merrell</p>
         <p>art director: Jesse Merrell</p>
     </div>
-</div>
-<div style="padding: 4rem var(--gutter); display: flex; justify-content: space-between; align-items: center; max-width: var(--max); margin: 0 auto;">
-    <a href="index.html" class="nav-back">← back</a>
-    <a href="lrng.html" class="nav-back">next →</a>
-</div>
+</section>
+<section class="project-gallery">
+    <img src="artemis-reference/artemis_01.jpg" alt="Artemis" loading="lazy">
+    <img src="artemis-reference/artemis_02.jpg" alt="Artemis" loading="lazy">
+    <img src="artemis-reference/artemis_03.jpg" alt="Artemis" loading="lazy">
+    <img src="artemis-reference/artemis_04.jpg" alt="Artemis" loading="lazy">
+    <img src="artemis-reference/artemis_05.jpg" alt="Artemis" loading="lazy">
+    <img src="artemis-reference/artemis_06.jpg" alt="Artemis" loading="lazy">
+    <img src="artemis-reference/artemis_07.jpg" alt="Artemis" loading="lazy">
+    <img src="artemis-reference/artemis_08.jpg" alt="Artemis" loading="lazy">
+</section>
+<footer class="project-footer">
+    <div class="footer-thumbs">
+        <a href="invoy.html" class="footer-thumb-card">
+            <img src="invoy-reference/Invoy - Branding - Thumbnail.jpg" alt="Invoy" loading="lazy">
+            <div class="footer-thumb-name">Invoy</div>
+        </a>
+        <a href="lrng.html" class="footer-thumb-card">
+            <img src="lrng-reference/LRNG - Thumbnail.jpg" alt="LRNG" loading="lazy">
+            <div class="footer-thumb-name">LRNG</div>
+        </a>
+        <a href="levis.html" class="footer-thumb-card">
+            <img src="levis-reference/Levi's - Thumbnail.jpg" alt="Levi's" loading="lazy">
+            <div class="footer-thumb-name">Levi's</div>
+        </a>
+        <a href="indiegogo.html" class="footer-thumb-card">
+            <img src="igg-reference/IGG - Thumbnail.jpg" alt="Indiegogo" loading="lazy">
+            <div class="footer-thumb-name">Indiegogo</div>
+        </a>
+        <a href="matic.html" class="footer-thumb-card">
+            <img src="matic-reference/Matic - Thumbnail.jpg" alt="Matic" loading="lazy">
+            <div class="footer-thumb-name">Matic</div>
+        </a>
+        <a href="jenniferjadelim.html" class="footer-thumb-card">
+            <img src="jenniferjadelim_01.jpg" alt="Personal Work" loading="lazy">
+            <div class="footer-thumb-name">Personal Work</div>
+        </a>
+    </div>
+    <div class="footer-contact">
+        <div class="footer-contact-email">
+            <a href="mailto:limjjyeah@gmail.com">limjjyeah@gmail.com</a>
+        </div>
+        <div class="footer-contact-socials">
+            <a href="https://linkedin.com/in/jenniferjadelimmerrell" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://instagram.com/jennyisthemedium" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>

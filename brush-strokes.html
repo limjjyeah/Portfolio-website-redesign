@@ -27,7 +27,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .project-gallery { padding: 3rem var(--gutter) 0; max-width: none; margin: 0; display: grid; gap: 2rem; grid-template-columns: 1fr 1fr; }
 @media (min-width: 640px) { .project-gallery { grid-template-columns: repeat(3, 1fr); } }
 @media (min-width: 1024px) { .project-gallery { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
-.project-gallery img { width: 100%; display: block; height: auto; aspect-ratio: 1/1; object-fit: cover; transition: opacity 0.3s; cursor: zoom-in; }
+.project-gallery img { width: 100%; display: block; height: auto; aspect-ratio: 1/1; object-fit: cover; transition: opacity 0.3s; }
 .project-gallery img:hover { opacity: 0.88; }
 #lightbox { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.93); align-items: center; justify-content: center; }
 #lightbox.open { display: flex; }
