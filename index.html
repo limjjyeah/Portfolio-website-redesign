@@ -630,6 +630,18 @@
             transition: opacity 0.35s ease;
         }
 
+        .service-card-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
+            margin-bottom: 1.25rem;
+            background: rgba(26,20,16,0.06);
+        }
+
+        .service-card:hover .service-card-placeholder {
+            opacity: 0.7;
+        }
+
         .service-card:hover .service-card-thumb {
             opacity: 0.82;
         }
@@ -659,6 +671,32 @@
         }
 
         /* === INVOY HERO THUMBNAIL === */
+        .invoy-section-header {
+            padding-top: 1.6em;
+            position: relative;
+            margin-bottom: 1.6em;
+        }
+        .invoy-section-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100vw;
+            right: -100vw;
+            height: 1px;
+            background: var(--text-primary);
+        }
+        .invoy-title {
+            font-size: var(--body-size);
+            font-weight: normal;
+            color: var(--text-primary);
+            margin-bottom: 3rem;
+        }
+        .invoy-blurb {
+            max-width: 680px;
+            color: var(--subtle);
+            line-height: 1.7;
+            margin: 0;
+        }
         .invoy-hero {
             width: 100%;
             max-width: 1400px;
@@ -742,6 +780,8 @@
         }
 
         .art-text.revealed { opacity: 1; transform: translateY(0); }
+
+        .art-copy { color: var(--subtle); }
 
         .art-text p {
             margin-bottom: 2rem;
@@ -1154,9 +1194,10 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>hi, i'm jennifer. i like to make meaningful things and help other people express their ideas in ways that feel clear, natural, and visually simple.</p>
-                    <p>over the past decade, i've been working as a designer with startups, studios, and companies like fisker, indiegogo, levi's, lego, bcg, and invoy. i've done a bit of everything: brand identities, print things, websites, apps, and decks (so many decks).</p>
-                    <p>outside of work i love being a homebody with my family and scrolling through photos of my two sons when they're not around.</p>
-                    <p>below you'll find a mix of personal work and select design projects.</p>
+                    <p>over the past decade, i've worked as a graphic designer with startups, studios, and companies like fisker, bcg digital ventures (for levi's, and lego), push studios, maker studios, and invoy. i've done a bit of everything: brand strategy and identities, print, websites, apps, and decks (so many decks).</p>
+                    <p>in my limited spare time, i'm usually exploring outside with my husband and two boys, making art, or reading.</p>
+                    <p>below is a mix of select design projects and my personal art.</p>
+                    <p>if you'd like to collaborate or have a project in mind, feel free to reach out.</p>
                 </div>
             </div>
         </section>
@@ -1282,6 +1323,10 @@
 
         <!-- Invoy Hero Thumbnail (above personal work) -->
         <div class="invoy-hero">
+            <div class="invoy-section-header">
+                <h2 class="invoy-title">current work</h2>
+                <p class="invoy-blurb">for the past six years, i've led brand strategy and creative at invoy, an irvine-based biotech startup, overseeing its visual identity across the entire product experience.</p>
+            </div>
             <a href="invoy.html">
                 <img src="invoy-reference/Invoy - Branding - Thumbnail.jpg" alt="Invoy — Art Direction, Brand Identity, UX, UI" class="invoy-hero-img">
             </a>
@@ -1298,24 +1343,22 @@
             <!-- Mobile-only collage stack (shown after heading on small screens) -->
             <div class="collage-mobile-preview">
                 <div class="collage-stack">
-                    <a href="personal.html#lb=12"><img class="collage-piece collage-piece-1" src="personal/JJLM_Book20192020_6.png" alt="Personal work — Jennifer Jade Lim"></a>
-                    <a href="jenniferjadelim.html"><img class="collage-piece collage-piece-3" src="jenniferjadelim_01.jpg" alt="Personal work — Jennifer Jade Lim"></a>
-                    <a href="personal.html#lb=11"><img class="collage-piece collage-piece-4" src="personal/JJLM_BookAug2020_7.png" alt="Personal work — Jennifer Jade Lim"></a>
+                    <a href="https://jenniferjadelim.com" target="_blank" rel="noopener noreferrer"><img class="collage-piece collage-piece-1" src="artwork/A-0003 - 2019 - 4.png" alt="Personal work — Jennifer Jade Lim"></a>
+                    <a href="https://jenniferjadelim.com" target="_blank" rel="noopener noreferrer"><img class="collage-piece collage-piece-4" src="personal/JJLM_BookAug2020_7.png" alt="Personal work — Jennifer Jade Lim"></a>
                 </div>
             </div>
 
             <div class="art-content">
                 <div class="art-text">
-                    <p>i've always felt drawn to deeper truths. through journalling and collaging, using found material, i find a certain fulfillment in expressing the recurring "ghost structures" of my mind (thoughts, emotions, sensory patterns...) here are some personal expressions...</p>
+                    <p class="art-copy">when i'm not working, i focus on my personal practice, intuition-led mark-making and writing. i use journaling and collage with found materials to express the recurring “ghost structures” of my inner world, like patterns of thought, emotion, and sensory experience.</p>
 <div class="art-links">
-                        <a href="jenniferjadelim.html">see more →</a>
+                        <a href="https://jenniferjadelim.com" target="_blank" rel="noopener noreferrer">see project →</a>
                     </div>
                 </div>
                 <div class="art-image">
                     <div class="collage-stack">
-                        <a href="personal.html#lb=12"><img class="collage-piece collage-piece-1" src="personal/JJLM_Book20192020_6.png" alt="Personal work — Jennifer Jade Lim"></a>
-                        <a href="jenniferjadelim.html"><img class="collage-piece collage-piece-3" src="jenniferjadelim_01.jpg" alt="Personal work — Jennifer Jade Lim"></a>
-                        <a href="personal.html#lb=11"><img class="collage-piece collage-piece-4" src="personal/JJLM_BookAug2020_7.png" alt="Personal work — Jennifer Jade Lim"></a>
+                        <a href="https://jenniferjadelim.com" target="_blank" rel="noopener noreferrer"><img class="collage-piece collage-piece-1" src="artwork/A-0003 - 2019 - 4.png" alt="Personal work — Jennifer Jade Lim"></a>
+                        <a href="https://jenniferjadelim.com" target="_blank" rel="noopener noreferrer"><img class="collage-piece collage-piece-4" src="personal/JJLM_BookAug2020_7.png" alt="Personal work — Jennifer Jade Lim"></a>
                     </div>
                 </div>
             </div>
@@ -1331,45 +1374,54 @@
 
 
             <div class="services-grid" id="servicesGrid">
-                <a href="artemis.html" class="service-card" data-tags="creative direction,brand identity,print">
-                    <div class="service-card-meta">
-                        <h3>Artemis</h3>
-                        <p>Creative Direction, Print Design</p>
-                    </div>
-                    <img src="artemis-reference/Artemis - Thumbnail.jpg" alt="Artemis" class="service-card-thumb">
-                </a>
-
-                <a href="lrng.html" class="service-card" data-tags="ux/ui,ui">
+                <a href="lrng.html" class="service-card" data-tags="brand strategy,brand identity,ux,ui">
                     <div class="service-card-meta">
                         <h3>LRNG</h3>
-                        <p>UX, UI</p>
+                        <p>Brand Strategy, Brand Identity, UX, UI</p>
                     </div>
                     <img src="lrng-reference/LRNG - Thumbnail.jpg" alt="LRNG" class="service-card-thumb">
                 </a>
 
-                <a href="levis.html" class="service-card" data-tags="visual design,ui">
+                <a href="levis.html" class="service-card" data-tags="graphic design,ui">
                     <div class="service-card-meta">
                         <h3>Levi's</h3>
-                        <p>Visual Design, UI</p>
+                        <p>Graphic Design, UI</p>
                     </div>
                     <img src="levis-reference/Levi's - Thumbnail.jpg" alt="Levi's" class="service-card-thumb">
                 </a>
 
-                <a href="indiegogo.html" class="service-card" data-tags="brand identity,print">
+                <a href="matic.html" class="service-card" data-tags="ux,ui">
+                    <div class="service-card-meta">
+                        <h3>Matic</h3>
+                        <p>UX, UI</p>
+                    </div>
+                    <img src="matic-reference/Matic - Thumbnail.jpg" alt="Matic" class="service-card-thumb">
+                </a>
+
+                <a href="indiegogo.html" class="service-card" data-tags="brand identity">
                     <div class="service-card-meta">
                         <h3>Indiegogo</h3>
-                        <p>Brand Identity Design</p>
+                        <p>Brand Identity</p>
                     </div>
                     <img src="igg-reference/IGG - Thumbnail.jpg" alt="Indiegogo" class="service-card-thumb">
                 </a>
 
-                <a href="matic.html" class="service-card" data-tags="art direction,brand identity">
+                <a href="artemis.html" class="service-card" data-tags="brand strategy,brand identity">
                     <div class="service-card-meta">
-                        <h3>Matic</h3>
-                        <p>Art Direction, Brand Identity</p>
+                        <h3>Artemis</h3>
+                        <p>Brand Strategy, Brand Identity</p>
                     </div>
-                    <img src="matic-reference/Matic - Thumbnail.jpg" alt="Matic" class="service-card-thumb">
+                    <img src="artemis-reference/Artemis - Thumbnail.jpg" alt="Artemis" class="service-card-thumb">
                 </a>
+
+                <a href="https://norkwwd.com/" target="_blank" rel="noopener noreferrer" class="service-card service-card--placeholder" data-tags="coming soon">
+                    <div class="service-card-meta">
+                        <h3>NORKWWD</h3>
+                        <p>Coming Soon</p>
+                    </div>
+                    <div class="service-card-placeholder"></div>
+                </a>
+
             </div>
         </section>
 
@@ -1415,7 +1467,7 @@
     <footer id="contact">
         <div class="footer-contact-bar">
             <div class="footer-email">
-                <a href="mailto:limjjyeah@gmail.com">limjjyeah@gmail.com</a>
+                <a href="mailto:hi@jenniferjadelim.com">hi@jenniferjadelim.com</a>
             </div>
             <div class="footer-socials">
                 <a href="https://linkedin.com/in/jenniferjadelimmerrell" target="_blank" rel="noopener noreferrer">LinkedIn</a>

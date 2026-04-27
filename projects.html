@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Jennifer Merrell</title>
+<link rel="icon" type="image/png" href="images/JenniferJadeLim_Stamp_Black.png">
+<link rel="apple-touch-icon" href="images/JenniferJadeLim_Stamp_Black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg: #F5EDE6; --fg: #3D3229; --subtle: rgba(61,50,41,0.4); --font: Georgia, 'Times New Roman', serif; --body-size: 14pt; --gutter: 2rem; --max: 1440px; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--fg); font-size: var(--body-size); line-height: 1.6; text-transform: lowercase; letter-spacing: 0; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.18; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 180px 180px; }
+a { color: inherit; text-decoration: none; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(245,237,230,0.95); backdrop-filter: blur(10px); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem var(--gutter); max-width: var(--max); margin: 0 auto; }
+.nav-stamp img { height: 72px; width: auto; filter: brightness(0); transition: opacity 0.2s; }
+.nav-stamp:hover img { opacity: 1; }
+.nav-home { opacity: 0.5; transition: opacity 0.2s; }
+.nav-home:hover { opacity: 1; }
+
+main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+.page-header { padding-top: 1.6em; position: relative; margin-top: 7rem; margin-bottom: 3rem; }
+.page-header::before { content: ''; position: absolute; top: 0; left: -100vw; right: -100vw; height: 1px; background: var(--fg); }
+.page-title { font-size: var(--body-size); font-weight: 400; }
+
+.projects-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 6rem; }
+.project-card { display: block; color: inherit; }
+.project-card-meta { margin-bottom: 0.75rem; }
+.project-card-name { font-size: var(--body-size); }
+.project-card-discipline { font-size: var(--body-size); color: var(--subtle); }
+.project-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; transition: opacity 0.3s; }
+.project-card:hover img { opacity: 0.72; }
+.project-card-placeholder { width: 100%; aspect-ratio: 16/9; display: block; background: rgba(61,50,41,0.06); }
+
+.clients-services { padding: 1.6em 0 5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem 2rem; position: relative; }
+.clients-services::before { content: ''; position: absolute; top: 0; left: -100vw; right: -100vw; height: 1px; background: var(--fg); }
+.clients-services > div:last-child { grid-column: 2 / 4; }
+.cs-label { color: var(--fg); margin-bottom: 0.5rem; }
+.cs-list { list-style: none; }
+.cs-list li { color: var(--subtle); }
+
+.footer-contact { display: flex; justify-content: space-between; align-items: center; padding-top: 1.6em; position: relative; padding-bottom: 4rem; }
+.footer-contact::before { content: ''; position: absolute; top: 0; left: -100vw; right: -100vw; height: 1px; background: var(--fg); }
+.footer-contact-email a { transition: opacity 0.2s; }
+.footer-contact-email a:hover { opacity: 0.6; }
+.footer-contact-socials { display: flex; gap: 2.5rem; }
+.footer-contact-socials a { opacity: 0.5; transition: opacity 0.2s; }
+.footer-contact-socials a:hover { opacity: 1; }
+
+@media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+    :root { --gutter: 1.25rem; }
+    .clients-services { grid-template-columns: 1fr; }
+    .clients-services > div:last-child { grid-column: 1; }
+    .footer-contact { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .footer-contact-socials { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-stamp"><img src="images/JenniferJadeLim_Stamp_Black.png" alt="Jennifer Jade Lim"></a>
+        <a href="index.html" class="nav-home">home</a>
+    </div>
+</nav>
+
+<main>
+    <div class="page-header">
+        <h1 class="page-title">projects</h1>
+    </div>
+
+    <div class="projects-grid">
+        <a href="lrng.html" class="project-card">
+            <div class="project-card-meta">
+                <div class="project-card-name">LRNG</div>
+                <div class="project-card-discipline">Brand Strategy, Brand Identity, UX, UI</div>
+            </div>
+            <img src="lrng-reference/LRNG - Thumbnail.jpg" alt="LRNG" loading="lazy">
+        </a>
+        <a href="levis.html" class="project-card">
+            <div class="project-card-meta">
+                <div class="project-card-name">Levi's</div>
+                <div class="project-card-discipline">Graphic Design, UI</div>
+            </div>
+            <img src="levis-reference/Levi's - Thumbnail.jpg" alt="Levi's" loading="lazy">
+        </a>
+        <a href="matic.html" class="project-card">
+            <div class="project-card-meta">
+                <div class="project-card-name">Matic</div>
+                <div class="project-card-discipline">UX, UI</div>
+            </div>
+            <img src="matic-reference/Matic - Thumbnail.jpg" alt="Matic" loading="lazy">
+        </a>
+        <a href="indiegogo.html" class="project-card">
+            <div class="project-card-meta">
+                <div class="project-card-name">Indiegogo</div>
+                <div class="project-card-discipline">Brand Identity</div>
+            </div>
+            <img src="igg-reference/IGG - Thumbnail.jpg" alt="Indiegogo" loading="lazy">
+        </a>
+        <a href="artemis.html" class="project-card">
+            <div class="project-card-meta">
+                <div class="project-card-name">Artemis</div>
+                <div class="project-card-discipline">Brand Strategy, Brand Identity</div>
+            </div>
+            <img src="artemis-reference/Artemis - Thumbnail.jpg" alt="Artemis" loading="lazy">
+        </a>
+        <a href="invoy.html" class="project-card">
+            <div class="project-card-meta">
+                <div class="project-card-name">Invoy</div>
+                <div class="project-card-discipline">Art Direction, Brand Identity, UX, UI</div>
+            </div>
+            <img src="invoy-reference/Invoy - Branding - Thumbnail.jpg" alt="Invoy" loading="lazy">
+        </a>
+        <a href="https://norkwwd.com/" target="_blank" rel="noopener noreferrer" class="project-card">
+            <div class="project-card-meta">
+                <div class="project-card-name">NORKWWD</div>
+                <div class="project-card-discipline">Coming Soon</div>
+            </div>
+            <div class="project-card-placeholder"></div>
+        </a>
+    </div>
+
+    <div class="clients-services">
+        <div>
+            <p class="cs-label">services</p>
+            <ul class="cs-list">
+                <li>Brand Strategy</li>
+                <li>Brand Identity</li>
+                <li>Art Direction</li>
+                <li>UX / UI</li>
+                <li>Graphic Design</li>
+                <li>Print</li>
+            </ul>
+        </div>
+        <div>
+            <p class="cs-label">clients</p>
+            <ul class="cs-list">
+                <li>Invoy</li>
+                <li>Levi's</li>
+                <li>LRNG</li>
+                <li>LEGO</li>
+                <li>Indiegogo</li>
+                <li>Fisker</li>
+                <li>Artemis</li>
+                <li>Matic</li>
+                <li>NORKWWD</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-contact">
+        <div class="footer-contact-email">
+            <a href="mailto:hi@jenniferjadelim.com">hi@jenniferjadelim.com</a>
+        </div>
+        <div class="footer-contact-socials">
+            <a href="https://linkedin.com/in/jenniferjadelimmerrell" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://instagram.com/jennyisthemedium" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
