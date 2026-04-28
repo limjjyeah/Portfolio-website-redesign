@@ -647,6 +647,10 @@
         }
 
         .service-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.5rem;
             padding-top: 0;
             margin-bottom: 1.25rem;
         }
@@ -659,8 +663,9 @@
 
         .service-card h3 {
             font-size: var(--body-size);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0;
             letter-spacing: 0;
+            flex-shrink: 0;
         }
 
         .service-card p {
@@ -668,6 +673,7 @@
             color: var(--subtle);
             line-height: 1.6;
             margin: 0;
+            text-align: right;
         }
 
         /* === INVOY HERO THUMBNAIL === */
@@ -695,7 +701,7 @@
             max-width: 680px;
             color: var(--subtle);
             line-height: 1.7;
-            margin: 0;
+            margin: 0 0 1.5rem;
         }
         .invoy-hero {
             width: 100%;
@@ -756,10 +762,15 @@
                 display: block;
                 padding: 0 1rem 0 3rem;
                 margin-top: 1.5rem;
-                margin-bottom: 1.5rem;
+                margin-bottom: 3rem;
             }
             .collage-mobile-preview .collage-stack {
-                height: 420px;
+                height: 560px;
+            }
+            .collage-mobile-preview .collage-piece-3 {
+                width: 38%;
+                top: 40%;
+                left: 28%;
             }
             .art-image {
                 display: none;
@@ -851,13 +862,13 @@
             transform: rotate(-2deg);
             z-index: 3;
         }
-        /* piece 3: blue group landscape — bottom-center, front */
+        /* piece 3: bottom image */
         .collage-piece-3 {
-            width: 66%;
+            width: 48%;
             height: auto;
-            top: 46%;
-            left: 10%;
-            transform: rotate(-1.2deg);
+            top: 38%;
+            left: 26%;
+            transform: rotate(1.8deg);
             z-index: 4;
         }
         /* piece 4: top-center, on top of both */
@@ -1083,6 +1094,15 @@
 
         /* === RESPONSIVE DESIGN === */
         @media (max-width: 768px) {
+            nav {
+                background: rgba(245, 237, 230, 0.95);
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-inner {
+                padding: 1.5rem 1.25rem;
+            }
+
             nav ul {
                 display: none;
             }
@@ -1146,7 +1166,7 @@
             }
 
             .nav-inner {
-                padding: 1rem 2rem;
+                padding: 1rem 1.25rem;
             }
 
             /* accordion already fluid at small sizes */
@@ -1326,6 +1346,9 @@
             <div class="invoy-section-header">
                 <h2 class="invoy-title">current work</h2>
                 <p class="invoy-blurb">for the past six years, i've led brand strategy and creative at invoy, an irvine-based biotech startup, overseeing its visual identity across the entire product experience.</p>
+                <div class="art-links">
+                    <a href="invoy.html">see project →</a>
+                </div>
             </div>
             <a href="invoy.html">
                 <img src="invoy-reference/Invoy - Branding - Thumbnail.jpg" alt="Invoy — Art Direction, Brand Identity, UX, UI" class="invoy-hero-img">
@@ -1345,6 +1368,7 @@
                 <div class="collage-stack">
                     <a href="https://jenniferjadelim.com" target="_blank" rel="noopener noreferrer"><img class="collage-piece collage-piece-1" src="artwork/A-0003 - 2019 - 4.png" alt="Personal work — Jennifer Jade Lim"></a>
                     <a href="https://jenniferjadelim.com" target="_blank" rel="noopener noreferrer"><img class="collage-piece collage-piece-4" src="personal/JJLM_BookAug2020_7.png" alt="Personal work — Jennifer Jade Lim"></a>
+                    <a href="https://jenniferjadelim.com" target="_blank" rel="noopener noreferrer"><img class="collage-piece collage-piece-3" src="personal/JJLM_Book2020_02.png" alt="Personal work — Jennifer Jade Lim"></a>
                 </div>
             </div>
 
@@ -1359,6 +1383,7 @@
                     <div class="collage-stack">
                         <a href="https://jenniferjadelim.com" target="_blank" rel="noopener noreferrer"><img class="collage-piece collage-piece-1" src="artwork/A-0003 - 2019 - 4.png" alt="Personal work — Jennifer Jade Lim"></a>
                         <a href="https://jenniferjadelim.com" target="_blank" rel="noopener noreferrer"><img class="collage-piece collage-piece-4" src="personal/JJLM_BookAug2020_7.png" alt="Personal work — Jennifer Jade Lim"></a>
+                        <a href="https://jenniferjadelim.com" target="_blank" rel="noopener noreferrer"><img class="collage-piece collage-piece-3" src="personal/JJLM_Book2020_02.png" alt="Personal work — Jennifer Jade Lim"></a>
                     </div>
                 </div>
             </div>
@@ -1374,18 +1399,18 @@
 
 
             <div class="services-grid" id="servicesGrid">
-                <a href="lrng.html" class="service-card" data-tags="brand strategy,brand identity,ux,ui">
+                <a href="lrng.html" class="service-card" data-tags="ux,ui">
                     <div class="service-card-meta">
                         <h3>LRNG</h3>
-                        <p>Brand Strategy, Brand Identity, UX, UI</p>
+                        <p>UX, UI</p>
                     </div>
                     <img src="lrng-reference/LRNG - Thumbnail.jpg" alt="LRNG" class="service-card-thumb">
                 </a>
 
-                <a href="levis.html" class="service-card" data-tags="graphic design,ui">
+                <a href="levis.html" class="service-card" data-tags="ui">
                     <div class="service-card-meta">
                         <h3>Levi's</h3>
-                        <p>Graphic Design, UI</p>
+                        <p>UI</p>
                     </div>
                     <img src="levis-reference/Levi's - Thumbnail.jpg" alt="Levi's" class="service-card-thumb">
                 </a>
@@ -1398,10 +1423,10 @@
                     <img src="matic-reference/Matic - Thumbnail.jpg" alt="Matic" class="service-card-thumb">
                 </a>
 
-                <a href="indiegogo.html" class="service-card" data-tags="brand identity">
+                <a href="indiegogo.html" class="service-card" data-tags="brand identity,print production">
                     <div class="service-card-meta">
                         <h3>Indiegogo</h3>
-                        <p>Brand Identity</p>
+                        <p>Brand Identity, Print</p>
                     </div>
                     <img src="igg-reference/IGG - Thumbnail.jpg" alt="Indiegogo" class="service-card-thumb">
                 </a>
@@ -1414,12 +1439,12 @@
                     <img src="artemis-reference/Artemis - Thumbnail.jpg" alt="Artemis" class="service-card-thumb">
                 </a>
 
-                <a href="https://norkwwd.com/" target="_blank" rel="noopener noreferrer" class="service-card service-card--placeholder" data-tags="coming soon">
+                <a href="https://www.norkwwd.com" target="_blank" rel="noopener noreferrer" class="service-card" data-tags="brand identity">
                     <div class="service-card-meta">
                         <h3>NORKWWD</h3>
-                        <p>Coming Soon</p>
+                        <p>Brand Identity</p>
                     </div>
-                    <div class="service-card-placeholder"></div>
+                    <img src="norkwwd/JesseMerrell_NORKWWD.jpg" alt="NORKWWD" class="service-card-thumb">
                 </a>
 
             </div>
