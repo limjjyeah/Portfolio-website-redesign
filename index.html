@@ -13,11 +13,11 @@
     <!-- Social / link preview -->
     <meta property="og:title" content="Jennifer Merrell">
     <meta property="og:description" content="Designer & Artist">
-    <meta property="og:image" content="https://www.jenniferjadelimmerrell.com/images/og-thumbnail.png?v=3">
+    <meta property="og:image" content="https://www.jenniferjadelimmerrell.com/images/og-thumbnail.png?v=4">
     <meta property="og:url" content="https://www.jenniferjadelimmerrell.com">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://www.jenniferjadelimmerrell.com/images/og-thumbnail.png?v=3">
+    <meta name="twitter:image" content="https://www.jenniferjadelimmerrell.com/images/og-thumbnail.png?v=4">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -256,7 +256,7 @@
             gap: 1rem;
             margin-bottom: 3rem;
             align-items: baseline;
-            padding-top: 1.6em;
+            padding-top: 1.4em;
             position: relative;
         }
 
@@ -266,7 +266,7 @@
             top: 0;
             left: 0; right: 0;
             height: 1px;
-            background: var(--line);
+            background: #96928E;
         }
 
         #about {
@@ -659,7 +659,7 @@
 
         /* === INVOY HERO THUMBNAIL === */
         .invoy-section-header {
-            padding-top: 1.6em;
+            padding-top: 1.4em;
             position: relative;
             margin-bottom: 1.6em;
         }
@@ -669,7 +669,7 @@
             top: 0;
             left: 0; right: 0;
             height: 1px;
-            background: var(--line);
+            background: #96928E;
         }
         .invoy-title {
             font-size: var(--body-size);
@@ -699,11 +699,13 @@
             aspect-ratio: 16 / 9;
             object-fit: cover;
             display: block;
-            transition: opacity 0.35s ease;
+            filter: grayscale(100%) contrast(1.35) url(#duotone-dark);
+            transition: filter 0.4s ease, opacity 0.35s ease;
         }
 
         .invoy-hero a:hover .invoy-hero-img {
-            opacity: 0.85;
+            filter: none;
+            opacity: 1;
         }
 
         .invoy-hero-meta {
@@ -935,7 +937,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 1.6em;
+            padding-top: 1.4em;
             position: relative;
         }
 
@@ -945,7 +947,7 @@
             top: 0;
             left: 0; right: 0;
             height: 1px;
-            background: var(--line);
+            background: #96928E;
         }
 
         .footer-contact-bar a {
@@ -1003,7 +1005,7 @@
             top: 0;
             left: 0; right: 0;
             height: 1px;
-            background: var(--line);
+            background: #96928E;
         }
 
         .cs-label {
@@ -1480,7 +1482,7 @@
                 <a href="mailto:hi@jenniferjadelim.com">hi@jenniferjadelim.com</a>
             </div>
             <div class="footer-socials">
-                <a href="https://linkedin.com/in/jenniferjadelimmerrell" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/jenniferjadelim/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://instagram.com/jennyisthemedium" target="_blank" rel="noopener noreferrer">Instagram</a>
             </div>
         </div>
