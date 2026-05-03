@@ -45,7 +45,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var
 .footer-thumb-card { display: block; color: inherit; }
 .footer-thumb-meta { margin-bottom: 0.75rem; }
 .footer-thumb-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; transition: opacity 0.3s; }
-.footer-thumb-card:hover img { opacity: 0.72; }
+
 .footer-thumb-name { font-size: var(--body-size); }
 .footer-thumb-discipline { font-size: var(--body-size); color: var(--subtle); margin-top: 0.75rem; }
 .footer-contact { display: flex; justify-content: space-between; align-items: center; padding-top: 1.6em; position: relative; } .footer-contact::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--line); }
@@ -55,10 +55,22 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var
 .footer-contact-socials a { opacity: 0.5; transition: opacity 0.2s; }
 .footer-contact-socials a:hover { opacity: 1; }
 @media (max-width: 768px) { .footer-thumbs { grid-template-columns: 1fr; } .footer-contact { flex-direction: column; gap: 1.5rem; text-align: center; } .footer-contact-socials { justify-content: center; } }
-.footer-contact { flex-direction: column; gap: 1.5rem; text-align: center; } .footer-contact-socials { justify-content: center; } }
+.footer-thumb-card img { filter: grayscale(100%) contrast(1.35) url(#duotone-dark); transition: filter 0.4s ease, opacity 0.3s; }
+.footer-thumb-card:hover img { filter: none; opacity: 1; }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+        <filter id="duotone-dark" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values="
+                0.80 0 0 0 0.18
+                0.83 0 0 0 0.14
+                0.84 0 0 0 0.11
+                0    0 0 1 0"/>
+        </filter>
+    </defs>
+</svg>
 
 <nav>
     <div class="nav-inner">
@@ -151,7 +163,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var
             <div class="footer-thumb-meta">
                 <div class="footer-thumb-name">Jennifer Jade Lim</div>
             </div>
-            <img src="jenniferjadelim-reference/Jennifer Merrell - Thumbnail.jpg" alt="Jennifer Jade Lim" loading="lazy">
+            <img src="jenniferjadelim-reference/jenniferjadelim_01.jpg" alt="Jennifer Jade Lim" loading="lazy">
             <div class="footer-thumb-discipline">Art Direction, Brand Identity</div>
         </a>
     </div>

@@ -626,8 +626,13 @@
             opacity: 0.7;
         }
 
+        .service-card-thumb {
+            filter: grayscale(100%) contrast(1.35) url(#duotone-dark);
+            transition: filter 0.4s ease;
+        }
+
         .service-card:hover .service-card-thumb {
-            opacity: 0.82;
+            filter: none;
         }
 
         .service-card-meta {
@@ -1146,6 +1151,18 @@
     </style>
 </head>
 <body>
+    <!-- Duotone filter for design-work thumbnails: maps grayscale luminance to a gradient between page bg (#FAF7F3) and dark text (#2E251D) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <filter id="duotone-dark" color-interpolation-filters="sRGB">
+                <feColorMatrix type="matrix" values="
+                    0.80 0 0 0 0.18
+                    0.83 0 0 0 0.14
+                    0.84 0 0 0 0.11
+                    0    0 0 1 0"/>
+            </filter>
+        </defs>
+    </svg>
     <!-- Skip to content link for accessibility -->
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
@@ -1409,7 +1426,7 @@
 
                 <a href="jenniferjadelim.html" class="service-card" data-tags="art direction,brand identity">
                     <div class="service-card-meta"><h3>Jennifer Jade Lim</h3></div>
-                    <img src="jenniferjadelim-reference/Jennifer Merrell - Thumbnail.jpg" alt="Jennifer Jade Lim" class="service-card-thumb">
+                    <img src="jenniferjadelim-reference/jenniferjadelim_01.jpg" alt="Jennifer Jade Lim" class="service-card-thumb">
                     <div class="service-card-tags">Art Direction, Brand Identity</div>
                 </a>
 

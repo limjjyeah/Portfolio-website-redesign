@@ -22,7 +22,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var
 @media (min-width: 1120px) { .project-intro { display: grid; grid-template-columns: 680px 280px; gap: 5rem; align-items: start; } }
 @media (max-width: 768px) { :root { --gutter: 1.25rem; } }
 .project-description { margin-bottom: 2rem; line-height: 1.7; }
-.project-credits { color: var(--fg); line-height: 1.8; }
+.project-description p { margin-bottom: 1.2em; }
+.project-description p:last-child { margin-bottom: 0; }
+.project-credits { color: var(--subtle); line-height: 1.8; }
 .project-credits p { margin-bottom: 0; }
 .project-gallery { padding: 0; max-width: none; margin: 0; display: grid; gap: 0; grid-template-columns: 1fr; }
 .project-gallery img { width: 100%; display: block; height: auto; transition: opacity 0.3s; }
@@ -40,7 +42,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var
 .footer-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
 .footer-thumb-card { display: block; color: inherit; }
 .footer-thumb-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; margin-bottom: 0.6rem; transition: opacity 0.3s; }
-.footer-thumb-card:hover img { opacity: 0.72; }
+
 .footer-thumb-name { font-size: var(--body-size); }
 .footer-thumb-discipline { font-size: var(--body-size); color: var(--subtle); margin-top: 0.75rem; }
 .footer-contact { display: flex; justify-content: space-between; align-items: center; padding-top: 2.5rem; border-top: 1px solid rgba(46,37,29,0.15); }
@@ -50,9 +52,22 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var
 .footer-contact-socials a { opacity: 0.5; transition: opacity 0.2s; }
 .footer-contact-socials a:hover { opacity: 1; }
 @media (max-width: 768px) { .footer-thumbs { grid-template-columns: 1fr; } .footer-contact { flex-direction: column; gap: 1.5rem; text-align: center; } .footer-contact-socials { justify-content: center; } }
+.footer-thumb-card img { filter: grayscale(100%) contrast(1.35) url(#duotone-dark); transition: filter 0.4s ease, opacity 0.3s; }
+.footer-thumb-card:hover img { filter: none; opacity: 1; }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+        <filter id="duotone-dark" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values="
+                0.80 0 0 0 0.18
+                0.83 0 0 0 0.14
+                0.84 0 0 0 0.11
+                0    0 0 1 0"/>
+        </filter>
+    </defs>
+</svg>
 
 <nav>
     <a href="index.html" class="nav-stamp"><img src="images/JenniferJadeLim_Stamp_Black.png" alt="Jennifer Jade Lim"></a>
