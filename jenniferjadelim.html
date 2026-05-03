@@ -13,10 +13,12 @@
 html { scroll-behavior: smooth; }
 body { font-family: var(--font); background: var(--bg); color: var(--fg); font-size: var(--body-size); line-height: 1.6; text-transform: lowercase; letter-spacing: 0; }
 a { color: inherit; text-decoration: none; }
-nav { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem var(--gutter); max-width: var(--max); margin: 0 auto; }
-.nav-back { opacity: 0.5; transition: opacity 0.2s; }
-.nav-back:hover { opacity: 1; }
-.project-intro { padding: 4rem var(--gutter) 3rem; max-width: var(--max); margin: 0 auto; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--bg); overflow: hidden; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem var(--gutter); max-width: var(--max); margin: 0 auto; }
+.nav-stamp img { height: 72px; width: auto; filter: brightness(0); transition: opacity 0.2s; }
+.nav-stamp:hover img { opacity: 1; }
+.nav-projects { opacity: 0.5; transition: opacity 0.2s; }
+.nav-projects:hover { opacity: 1; }
+.project-intro { padding: 9rem var(--gutter) 6rem; max-width: var(--max); margin: 0 auto; }
 @media (min-width: 1120px) { .project-intro { display: grid; grid-template-columns: 680px 280px; gap: 5rem; align-items: start; } }
 @media (max-width: 768px) { :root { --gutter: 1.25rem; } }
 .project-description { margin-bottom: 2rem; line-height: 1.7; }
@@ -53,13 +55,20 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 <body>
 
 <nav>
-    <a href="index.html" class="nav-back">← back</a>
+    <a href="index.html" class="nav-stamp"><img src="images/JenniferJadeLim_Stamp_Black.png" alt="Jennifer Jade Lim"></a>
+    <a href="projects.html" class="nav-projects">all projects</a>
 </nav>
 
 <section class="project-intro">
-    <p class="project-description"></p>
+    <div class="project-description">
+        <p>i'm a korean-american artist and designer based in long beach, ca. my work explores identity, intuition, and expression beyond expected boundaries. i'm drawn to simple, primal forms and symbols like the sea, rural korea, haenyeo, and calligraphic mark-making.</p>
+        <p>over the past few years, i've been building a more personal practice alongside my design work. i journal daily and make space to create, following what feels true.</p>
+        <p>with my husband, i built my website as a quiet foundation to share the work. together we shaped a simple identity and space that reflects how i think and make, and allows the work to grow naturally.</p>
+    </div>
     <div class="project-credits">
-        <p>head of creative: Jennifer Merrell</p>
+        <p>client: me :)</p>
+        <p>art director: jennifer merrell</p>
+        <p>creative director: jesse merrell</p>
     </div>
 </section>
 
@@ -105,33 +114,54 @@ document.addEventListener('keydown', e => { if (!lb.classList.contains('open')) 
 
 <footer class="project-footer">
     <div class="footer-thumbs">
-        <a href="invoy.html" class="footer-thumb-card">
-            <img src="invoy-reference/Invoy - Branding - Thumbnail.jpg" alt="Invoy" loading="lazy">
-            <div class="footer-thumb-name">Invoy</div>
-        </a>
-        <a href="artemis.html" class="footer-thumb-card">
-            <img src="artemis-reference/Artemis - Thumbnail.jpg" alt="Artemis" loading="lazy">
-            <div class="footer-thumb-name">Artemis</div>
-        </a>
         <a href="lrng.html" class="footer-thumb-card">
+            <div class="footer-thumb-meta">
+                <div class="footer-thumb-name">LRNG</div>
+            </div>
             <img src="lrng-reference/LRNG - Thumbnail.jpg" alt="LRNG" loading="lazy">
-            <div class="footer-thumb-name">LRNG</div>
+            <div class="footer-thumb-discipline">UX, UI</div>
         </a>
         <a href="levis.html" class="footer-thumb-card">
+            <div class="footer-thumb-meta">
+                <div class="footer-thumb-name">Levi's</div>
+            </div>
             <img src="levis-reference/Levi's - Thumbnail.jpg" alt="Levi's" loading="lazy">
-            <div class="footer-thumb-name">Levi's</div>
-        </a>
-        <a href="indiegogo.html" class="footer-thumb-card">
-            <img src="igg-reference/Indiegogo - Thumbnail.jpg" alt="Indiegogo" loading="lazy">
-            <div class="footer-thumb-name">Indiegogo</div>
+            <div class="footer-thumb-discipline">UI</div>
         </a>
         <a href="matic.html" class="footer-thumb-card">
+            <div class="footer-thumb-meta">
+                <div class="footer-thumb-name">Matic</div>
+            </div>
             <img src="matic-reference/Matic - Thumbnail.jpg" alt="Matic" loading="lazy">
-            <div class="footer-thumb-name">Matic</div>
+            <div class="footer-thumb-discipline">UX, UI</div>
         </a>
-        <a href="personal.html" class="footer-thumb-card">
-            <img src="personal/JJLM_BookAug2020_11.png" alt="Personal Work" loading="lazy">
-            <div class="footer-thumb-name">Personal Work</div>
+        <a href="indiegogo.html" class="footer-thumb-card">
+            <div class="footer-thumb-meta">
+                <div class="footer-thumb-name">Indiegogo</div>
+            </div>
+            <img src="igg-reference/Indiegogo - Thumbnail.jpg" alt="Indiegogo" loading="lazy">
+            <div class="footer-thumb-discipline">Brand Identity, Print</div>
+        </a>
+        <a href="artemis.html" class="footer-thumb-card">
+            <div class="footer-thumb-meta">
+                <div class="footer-thumb-name">Artemis</div>
+            </div>
+            <img src="artemis-reference/Artemis - Thumbnail.jpg" alt="Artemis" loading="lazy">
+            <div class="footer-thumb-discipline">Brand Strategy, Brand Identity</div>
+        </a>
+        <a href="https://www.norkwwd.com" target="_blank" rel="noopener noreferrer" class="footer-thumb-card">
+            <div class="footer-thumb-meta">
+                <div class="footer-thumb-name">NORKWWD</div>
+            </div>
+            <img src="norkwwd/JesseMerrell_NORKWWD.jpg" alt="NORKWWD" loading="lazy">
+            <div class="footer-thumb-discipline">Brand Identity</div>
+        </a>
+        <a href="invoy.html" class="footer-thumb-card">
+            <div class="footer-thumb-meta">
+                <div class="footer-thumb-name">Invoy</div>
+            </div>
+            <img src="invoy-reference/Invoy - Branding - Thumbnail.jpg" alt="Invoy" loading="lazy">
+            <div class="footer-thumb-discipline">Art Direction, Brand Identity, UX, UI</div>
         </a>
     </div>
     <div class="footer-contact">

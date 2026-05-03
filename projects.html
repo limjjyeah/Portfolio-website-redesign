@@ -29,7 +29,7 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--line); }
 .page-title { font-size: var(--body-size); font-weight: 400; }
 
-.projects-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; margin-bottom: 6rem; }
+.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 6rem; }
 .project-card { display: block; color: inherit; }
 .project-card-meta { margin-bottom: 0.75rem; }
 .project-card-name { font-size: var(--body-size); }
@@ -53,6 +53,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .footer-contact-socials a { opacity: 0.5; transition: opacity 0.2s; }
 .footer-contact-socials a:hover { opacity: 1; }
 
+@media (max-width: 900px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; } }
 @media (max-width: 768px) {
     :root { --gutter: 1.25rem; }
     .clients-services { grid-template-columns: 1fr; }
@@ -123,8 +125,15 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
             <div class="project-card-meta">
                 <div class="project-card-name">NORKWWD</div>
             </div>
-            <div class="project-card-placeholder"></div>
+            <img src="norkwwd/JesseMerrell_NORKWWD.jpg" alt="NORKWWD" loading="lazy">
             <div class="project-card-discipline">Brand Identity</div>
+        </a>
+        <a href="jenniferjadelim.html" class="project-card">
+            <div class="project-card-meta">
+                <div class="project-card-name">Jennifer Jade Lim</div>
+            </div>
+            <img src="jenniferjadelim-reference/Jennifer Merrell - Thumbnail.jpg" alt="Jennifer Jade Lim" loading="lazy">
+            <div class="project-card-discipline">Art Direction, Brand Identity</div>
         </a>
     </div>
 
